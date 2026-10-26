@@ -2,26 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cameron Reece Allcock · MetaTrader 5 Expert Advisors</title>
-<meta name="description" content="MetaTrader 5 Expert Advisors for gold by Cameron Reece Allcock, available on the MQL5 Market. EA Generator coming soon.">
-<meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cameron Reece Allcock · MetaTrader 5 Expert Advisors for gold</title>
+<meta name="description" content="Tidewell XAU Trend and Embercrest XAU Breakout: MetaTrader 5 Expert Advisors for XAUUSD by Cameron Reece Allcock, available on the MQL5 Market.">
+<meta name="theme-color" content="#0a0b0d">
+<meta name="color-scheme" content="dark">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="wordmark" href="#top" aria-label="Cameron Reece Allcock, home">Cameron Reece Allcock</a>
-    <nav aria-label="Primary">
-      <ul class="nav">
-        <li><a href="#expert-advisors">Expert Advisors</a></li>
-        <li><a href="#generator">EA Generator</a></li>
-        <li><a href="#signals">Signals</a></li>
-        <li><a href="#approach">Approach</a></li>
-      </ul>
+    <a class="wordmark" href="#top"><span class="mark" aria-hidden="true"></span>Cameron Reece Allcock</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav id="primary-nav" class="nav" aria-label="Primary">
+      <a class="link" href="#expert-advisors">Expert Advisors</a>
+      <a class="link" href="#on-the-chart">On the chart</a>
+      <a class="link" href="#forward-test">Forward test</a>
+      <a class="link" href="#generator">EA Generator</a>
+      <a class="btn btn-ghost btn-sm" href="https://www.mql5.com/en/users/camerona/seller" rel="noopener">MQL5 profile</a>
     </nav>
   </div>
 </header>
@@ -29,128 +34,193 @@
 <main id="main">
 
   <section class="hero" id="top" aria-labelledby="hero-title">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow">MetaTrader 5 Expert Advisors</p>
-        <h1 id="hero-title">Expert Advisors for gold, built with care and explained plainly.</h1>
-        <p class="lede">I’m Cameron Reece Allcock, an independent developer in South Africa. I design and build automated trading programs (Expert Advisors) for MetaTrader&nbsp;5 and publish them on the MQL5 Market.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#expert-advisors">See the Expert Advisors</a>
-          <a class="btn btn-quiet" href="https://www.mql5.com/en/users/camerona/seller" rel="noopener">My MQL5 seller profile <span aria-hidden="true">→</span></a>
-        </div>
+    <canvas class="hero-field" aria-hidden="true"></canvas>
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow" data-reveal>MetaTrader 5 · Expert Advisors · MQL5 Market</p>
+      <h1 id="hero-title" class="display" data-split>Expert Advisors for gold, built with discipline.</h1>
+      <p class="lede" data-reveal style="--d:.35s">I’m Cameron Reece Allcock, an independent developer in South Africa. I design, test and document automated trading programs for MetaTrader&nbsp;5, and publish them on the MQL5 Market.</p>
+      <div class="actions" data-reveal style="--d:.5s">
+        <a class="btn btn-gold magnetic" href="#expert-advisors"><span>Explore the Expert Advisors</span></a>
+        <a class="btn btn-ghost magnetic" href="#generator"><span>EA Generator: coming soon</span></a>
       </div>
-
-      <aside class="announce" id="generator" aria-labelledby="gen-title">
-        <p class="tag">Coming soon</p>
-        <h2 id="gen-title">EA Generator</h2>
-        <p>The EA Generator is the pipeline I use to build and test my own Expert Advisors. I’m getting it ready to share. Leave your name and email if you’d like to hear when sign-ups open.</p>
-        <!-- TODO: connect this form to a form provider (e.g. an email list service). It is intentionally wired to nothing: no action, no endpoint, nothing is sent or stored. -->
-        <form class="interest" id="interest-form">
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name" required>
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <button class="btn btn-primary" type="submit">Keep me posted</button>
-          <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
-        </form>
-      </aside>
+      <dl class="hero-facts" data-reveal style="--d:.65s">
+        <div><dt>Instrument</dt><dd>XAUUSD</dd></div>
+        <div><dt>Chart</dt><dd>M15</dd></div>
+        <div><dt>Platform</dt><dd>MetaTrader 5</dd></div>
+        <div><dt>Available on</dt><dd>MQL5 Market</dd></div>
+      </dl>
     </div>
+    <a class="scroll-cue" href="#expert-advisors"><span class="sr-only">Scroll to the Expert Advisors</span><span aria-hidden="true"></span></a>
   </section>
+
+  <div class="trace" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" focusable="false">
+      <defs><linearGradient id="tg" x1="0" x2="1"><stop offset="0" stop-color="#d8b46a" stop-opacity="0"/><stop offset=".25" stop-color="#d8b46a"/><stop offset=".75" stop-color="#f0d9a6"/><stop offset="1" stop-color="#d8b46a" stop-opacity="0"/></linearGradient></defs>
+      <path class="draw" pathLength="1" d="M0 64 C60 40 100 88 160 70 S260 30 320 58 420 96 480 66 580 24 640 52 740 94 800 62 900 34 960 60 1060 92 1120 64 1220 30 1280 56 1380 84 1440 60" fill="none" stroke="url(#tg)" stroke-width="1.5"/>
+    </svg>
+  </div>
 
   <section class="section" id="expert-advisors" aria-labelledby="eas-title">
     <div class="wrap">
-      <header class="section-head">
-        <p class="eyebrow">Available on the MQL5 Market</p>
-        <h2 id="eas-title">Expert Advisors</h2>
-        <p class="section-lede">Two Expert Advisors for XAUUSD (gold), each with a stop loss and take profit on every trade and simple controls right on the chart.</p>
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">01 · Published on the MQL5 Market</p>
+        <h2 id="eas-title" class="h2">Two Expert Advisors. One instrument, studied closely.</h2>
+        <p class="section-lede">Both are built for XAUUSD (gold) on the 15-minute chart. Each sends every trade with a stop loss and a take profit, and each can be adjusted right on the chart.</p>
       </header>
 
       <div class="cards">
-        <article class="card" aria-labelledby="tw-title">
-          <div class="card-head">
-            <img class="logo" src="assets/img/tidewell-logo.png" width="56" height="56" alt="Tidewell XAU Trend logo: a sun setting over horizon bars">
-            <div>
-              <h3 id="tw-title">Tidewell XAU Trend</h3>
-              <p class="meta">XAUUSD · M15 · Trend following</p>
+        <article class="card tilt" style="--hue:#4cc7b6" data-reveal aria-labelledby="tw-title">
+          <div class="card-light" aria-hidden="true"></div>
+          <div class="card-body">
+            <div class="card-head">
+              <img class="logo" src="assets/img/tidewell-logo.png" width="64" height="64" alt="Tidewell XAU Trend logo: a pale sun setting over teal and blue horizon bars">
+              <div>
+                <h3 id="tw-title">Tidewell XAU Trend</h3>
+                <p class="meta">XAUUSD · M15 · Trend following · v1.305</p>
+              </div>
             </div>
-          </div>
-          <p class="desc">A trend-following Expert Advisor for gold, with on-chart controls for risk, direction, limits and trading sessions.</p>
-          <ul class="facts" aria-label="Design principles">
-            <li>No grid</li><li>No martingale</li><li>No averaging down</li>
-          </ul>
-          <figure class="shot">
-            <img src="assets/img/tidewell-controls.jpg" width="1280" height="800" loading="lazy" alt="Tidewell XAU Trend on-chart controls panel in MetaTrader 5, showing risk level, trade direction, drawdown limit, maximum open trades, maximum spread and session filter settings">
-            <figcaption>On-chart controls in MetaTrader 5</figcaption>
-          </figure>
-          <div class="card-foot">
-            <p class="price">199&nbsp;USD <span>or 30&nbsp;USD a month to rent</span></p>
-            <a class="btn btn-primary" href="https://www.mql5.com/en/market/product/203591" rel="noopener">View on MQL5 Market<span class="sr-only">: Tidewell XAU Trend</span></a>
+            <p class="desc">A trend-following Expert Advisor for gold. It stays selective, and you can adjust risk, direction, limits and trading sessions from a compact panel on the chart.</p>
+            <!-- TODO (Cameron to confirm): add "No grid · No martingale · No averaging down" for Tidewell only once confirmed. Its MQL5 listing does not state this yet. -->
+            <figure class="shot">
+              <div class="shot-frame">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/tidewell-controls-720.webp 720w, assets/img/tidewell-controls-1280.webp 1280w" sizes="(max-width: 960px) 92vw, 560px">
+                  <img src="assets/img/tidewell-controls.jpg" width="1280" height="800" loading="lazy" decoding="async" alt="Tidewell XAU Trend’s Controls tab in MetaTrader 5: risk level, trade direction, maximum drawdown, lot multiplier, maximum open trades, maximum spread and session filter, plus a Close all button that asks twice">
+                </picture>
+              </div>
+              <figcaption>The Controls tab, captured in MetaTrader 5</figcaption>
+            </figure>
+            <div class="card-foot">
+              <p class="price"><span class="amount">199 USD</span><span class="sub">or 30 USD to rent for 1 month</span></p>
+              <a class="btn btn-gold magnetic" href="https://www.mql5.com/en/market/product/203591" rel="noopener"><span>View on MQL5 Market<span class="sr-only">: Tidewell XAU Trend</span></span></a>
+            </div>
           </div>
         </article>
 
-        <article class="card" aria-labelledby="ec-title">
-          <div class="card-head">
-            <img class="logo" src="assets/img/embercrest-logo.svg" width="56" height="56" alt="Embercrest XAU Breakout logo: an ember orb above three bars">
-            <div>
-              <h3 id="ec-title">Embercrest XAU Breakout</h3>
-              <p class="meta">XAUUSD · M15 · Breakout</p>
+        <article class="card tilt" style="--hue:#e8894c;--d:.12s" data-reveal aria-labelledby="ec-title">
+          <div class="card-light" aria-hidden="true"></div>
+          <div class="card-body">
+            <div class="card-head">
+              <img class="logo" src="assets/img/embercrest-logo.svg" width="64" height="64" alt="Embercrest XAU Breakout logo: an ember-coloured orb above three bars">
+              <div>
+                <h3 id="ec-title">Embercrest XAU Breakout</h3>
+                <p class="meta">XAUUSD · M15 · Breakout · v1.906</p>
+              </div>
             </div>
-          </div>
-          <p class="desc">A breakout Expert Advisor for gold, with on-chart controls for risk, direction, limits and trading sessions.</p>
-          <ul class="facts" aria-label="Design principles">
-            <li>No grid</li><li>No martingale</li><li>No averaging down</li>
-          </ul>
-          <figure class="shot">
-            <img src="assets/img/embercrest-controls.jpg" width="1280" height="800" loading="lazy" alt="Embercrest XAU Breakout on-chart controls panel in MetaTrader 5, showing risk level, trade direction, drawdown limit, maximum open trades, maximum spread and session filter settings">
-            <figcaption>On-chart controls in MetaTrader 5</figcaption>
-          </figure>
-          <div class="card-foot">
-            <p class="price">99&nbsp;USD <span>or 30&nbsp;USD a month to rent</span></p>
-            <a class="btn btn-primary" href="https://www.mql5.com/en/market/product/203661" rel="noopener">View on MQL5 Market<span class="sr-only">: Embercrest XAU Breakout</span></a>
+            <p class="desc">A breakout Expert Advisor for gold. It waits patiently for clear moves, so there can be days between trades, and it shares the same on-chart controls.</p>
+            <ul class="chips" aria-label="Position management">
+              <li>No grid</li><li>No martingale</li><li>No averaging down</li>
+            </ul>
+            <figure class="shot">
+              <div class="shot-frame">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/embercrest-controls-720.webp 720w, assets/img/embercrest-controls-1280.webp 1280w" sizes="(max-width: 960px) 92vw, 560px">
+                  <img src="assets/img/embercrest-controls.jpg" width="1280" height="800" loading="lazy" decoding="async" alt="Embercrest XAU Breakout’s Controls tab in MetaTrader 5: risk level, trade direction, maximum drawdown, lot multiplier, maximum open trades, maximum spread and session filter, plus a Close all button that asks twice">
+                </picture>
+              </div>
+              <figcaption>The Controls tab, captured in MetaTrader 5</figcaption>
+            </figure>
+            <div class="card-foot">
+              <p class="price"><span class="amount">99 USD</span><span class="sub">or 30 USD to rent for 1 month</span></p>
+              <a class="btn btn-gold magnetic" href="https://www.mql5.com/en/market/product/203661" rel="noopener"><span>View on MQL5 Market<span class="sr-only">: Embercrest XAU Breakout</span></span></a>
+            </div>
           </div>
         </article>
       </div>
-      <p class="fineprint">Prices are set on the MQL5 Market and may change; the product page always has the current price.</p>
+      <p class="fineprint" data-reveal>Prices as shown on each MQL5 Market product page on 26 October 2026. MQL5 sets the final price at checkout, so check the product page for the current one.</p>
     </div>
   </section>
 
-  <section class="section section-alt" id="signals" aria-labelledby="signals-title">
-    <div class="wrap split">
-      <div>
-        <p class="eyebrow">Coming soon</p>
-        <h2 id="signals-title">Live demo signals</h2>
+  <section class="section story" id="on-the-chart" aria-labelledby="chart-title">
+    <div class="wrap story-grid">
+      <div class="story-sticky">
+        <p class="eyebrow">02 · On the chart</p>
+        <h2 id="chart-title" class="h2">Control that lives where you trade.</h2>
+        <p class="section-lede">A small panel in the corner of the chart shows each Expert Advisor’s status and open trades, and opens into tabs when you need more.</p>
+        <div class="story-meter" aria-hidden="true"><span></span></div>
       </div>
-      <div>
-        <p>I’m setting up MQL5 Signals for both Expert Advisors on Exness demo accounts, so anyone can follow how they behave in real market conditions, trade by trade. They’ll be linked here and from each product page once they’re running.</p>
+      <ol class="steps">
+        <li class="step" data-step><span class="num" aria-hidden="true">01</span><div><h3>Defined exits</h3><p>Every trade is sent with a stop loss and a take profit from the moment it opens.</p></div></li>
+        <li class="step" data-step><span class="num" aria-hidden="true">02</span><div><h3>Risk you choose</h3><p>Pick Conservative, Balanced, Aggressive or Custom, and change it on the chart without opening the settings window.</p></div></li>
+        <li class="step" data-step><span class="num" aria-hidden="true">03</span><div><h3>A drawdown limit</h3><p>If the account falls by the limit you set, the Expert Advisor closes its own trades and pauses.</p></div></li>
+        <li class="step" data-step><span class="num" aria-hidden="true">04</span><div><h3>Direction, spread and sessions</h3><p>Trade both ways or one way only, skip wide spreads, and limit trading to the London and New York sessions if you prefer.</p></div></li>
+        <li class="step" data-step><span class="num" aria-hidden="true">05</span><div><h3>Close all, asked twice</h3><p>Close all closes only that Expert Advisor’s own trades, and asks for a second click to confirm.</p></div></li>
+        <li class="step" data-step><span class="num" aria-hidden="true">06</span><div><h3>Documented properly</h3><p>Each comes with a user manual and recommended settings on its MQL5 product page.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="forward-test" aria-labelledby="ft-title">
+    <div class="wrap">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">03 · Forward test</p>
+        <h2 id="ft-title" class="h2">Forward test on a demo account</h2>
+        <p class="section-lede">Backtests only show the past. Each Expert Advisor is also being run forward on a demo account, and the reports will appear here as they mature.</p>
+      </header>
+      <div class="ft-grid">
+        <article class="panel tilt" data-reveal aria-labelledby="ft-tw">
+          <div class="card-light" aria-hidden="true"></div>
+          <div class="panel-body">
+            <h3 id="ft-tw"><img src="assets/img/tidewell-logo.png" width="28" height="28" alt="">Tidewell XAU Trend</h3>
+            <dl class="status">
+              <div><dt>Account</dt><dd>Demo</dd></div>
+              <div><dt>Report</dt><dd class="pending">Report pending</dd></div>
+            </dl>
+            <a class="link link-arrow" href="https://www.myfxbook.com/members/CamA1/tidewell/12279079/lteBWLNUbv0cmcNxvR9f" rel="noopener">Forward test on a demo account (Myfxbook)<span class="arr" aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="panel tilt" data-reveal style="--d:.12s" aria-labelledby="ft-ec">
+          <div class="card-light" aria-hidden="true"></div>
+          <div class="panel-body">
+            <h3 id="ft-ec"><img src="assets/img/embercrest-logo.svg" width="28" height="28" alt="">Embercrest XAU Breakout</h3>
+            <dl class="status">
+              <div><dt>Account</dt><dd>Demo</dd></div>
+              <div><dt>Report</dt><dd class="pending">Report pending</dd></div>
+            </dl>
+            <p class="muted-note">A public link will be added here.</p>
+          </div>
+        </article>
       </div>
+      <p class="fineprint" data-reveal>Demo-account results can differ from funded accounts because of execution, spread, slippage and fees. Neither backtests nor demo forward tests indicate future results.</p>
+    </div>
+  </section>
+
+  <section class="section generator" id="generator" aria-labelledby="gen-title">
+    <div class="wrap gen-grid">
+      <div data-reveal>
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>04 · Coming soon</p>
+        <h2 id="gen-title" class="h2">EA Generator</h2>
+        <p class="section-lede">A tool for building and testing MetaTrader 5 Expert Advisors. There’s more to share soon. Leave your name and email if you’d like to hear when sign-ups open.</p>
+      </div>
+      <!-- TODO: connect this form to a form provider. It is intentionally wired to nothing: no action, no endpoint, nothing is sent or stored. -->
+      <form class="interest" id="interest-form" data-reveal style="--d:.12s">
+        <div class="field">
+          <input id="name" name="name" type="text" autocomplete="name" required placeholder=" ">
+          <label for="name">Name</label>
+        </div>
+        <div class="field">
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder=" ">
+          <label for="email">Email</label>
+        </div>
+        <button class="btn btn-gold magnetic" type="submit"><span>Keep me posted</span></button>
+        <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
   <section class="section" id="approach" aria-labelledby="approach-title">
     <div class="wrap">
-      <header class="section-head">
-        <p class="eyebrow">About</p>
-        <h2 id="approach-title">How I work</h2>
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">05 · About</p>
+        <h2 id="approach-title" class="h2">How I work</h2>
       </header>
       <ul class="principles">
-        <li>
-          <h3>Defined risk on every trade</h3>
-          <p>Each trade is sent with a stop loss and a take profit, and a drawdown limit pauses trading if the account falls too far.</p>
-        </li>
-        <li>
-          <h3>Control without the settings window</h3>
-          <p>A compact panel on the chart shows status and open trades, and lets you change risk, direction and limits as you go.</p>
-        </li>
-        <li>
-          <h3>Plain, honest documentation</h3>
-          <p>Each Expert Advisor comes with a user manual and recommended settings. Backtests are labelled as backtests, never presented as live results.</p>
-        </li>
+        <li data-reveal><h3>Restraint over activity</h3><p>Both Expert Advisors are designed to stay out when conditions aren’t clear, rather than trade for the sake of it.</p></li>
+        <li data-reveal style="--d:.1s"><h3>Honest labels</h3><p>Backtests are called backtests and demo tests are called demo tests. Neither is presented as anything more.</p></li>
+        <li data-reveal style="--d:.2s"><h3>Plain documentation</h3><p>Every control is explained in a sentence, and each product page carries a user manual and recommended settings.</p></li>
       </ul>
-      <p class="broker">Broker I use: Exness<!-- TODO: add Exness affiliate link here once available. Plain text until then; do not invent a link. --></p>
+      <!-- Broker / affiliate line removed on purpose: that decision is pending with Cameron. Do not add a broker name or affiliate link until he decides. -->
     </div>
   </section>
 
@@ -158,21 +228,15 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p class="disclaimer"><strong>Risk warning.</strong> Trading foreign exchange, metals and other leveraged products involves substantial risk of loss and is not suitable for every investor. Past or backtest performance is not indicative of future results. Nothing on this site is financial advice. Test any Expert Advisor in the Strategy Tester and on a demo account before trading live.</p>
+    <p class="foot-name">Cameron Reece Allcock</p>
+    <p class="disclaimer"><strong>Risk warning.</strong> Trading foreign exchange, metals and other leveraged products involves substantial risk of loss and is not suitable for every investor. You can lose more than you expect. Past or backtest performance is not indicative of future results, and demo-account forward tests are not either. Nothing on this site is financial advice or a promise of any outcome. Test any Expert Advisor in the Strategy Tester and on a demo account before you trade with money you can afford to lose.</p>
     <div class="footer-row">
       <p>© 2026 Cameron Reece Allcock. All rights reserved.</p>
-      <p><a href="https://www.mql5.com/en/users/camerona/seller" rel="noopener">MQL5 seller profile</a></p>
+      <p><a class="link" href="https://www.mql5.com/en/users/camerona/seller" rel="noopener">MQL5 seller profile</a></p>
     </div>
   </div>
 </footer>
 
-<script>
-  // The interest form is not connected to anything yet: no data is sent or stored.
-  document.getElementById('interest-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var note = document.getElementById('form-note');
-    note.textContent = 'Thank you. Sign-ups open soon, and nothing has been sent or stored yet. Please check back here.';
-  });
-</script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
