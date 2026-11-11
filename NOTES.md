@@ -1,5 +1,7 @@
 # Notes: v2 (26 Oct 2026)
 
+> **Moved 11 Nov 2026:** this Expert Advisors page now lives at `mql5/index.html` (its asset paths are now `../assets/...`), and the site root is Cameron's CV landing page. The notes below describe the MQL5 page. For the landing page, see `README.md` and `preview/cv/REPORT.md`.
+
 Cameron resumed the site on 26 Oct 2026 at 20:27 SAST and asked for v2: "in full detail ... make it phenomenal". Nothing is deployed yet.
 
 ## What v2 is

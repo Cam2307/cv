@@ -1,0 +1,160 @@
+/* Cameron Reece Allcock: shared styles for the CV pages.
+   Strictly monochrome: every colour below is a neutral grey (r = g = b) or a white/black alpha. */
+
+@font-face{font-family:"Geist";src:url(../fonts/geist-var.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Geist Mono";src:url(../fonts/geist-mono-var.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Serif";src:url(../fonts/instrument-serif-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+
+:root{
+  color-scheme:dark;
+  --bg:#050505;
+  --bg-2:#0a0a0a;
+  --surface:#101010;
+  --surface-2:#171717;
+  --text:#f2f2f2;
+  --body:#bdbdbd;
+  --muted:#939393;
+  --dim:#5e5e5e;
+  --line:rgba(255,255,255,.1);
+  --line-2:rgba(255,255,255,.18);
+  --line-3:rgba(255,255,255,.34);
+  --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SFMono-Regular","Cascadia Mono",Menlo,Consolas,monospace;
+  --serif:"Instrument Serif","Iowan Old Style","Times New Roman",serif;
+  --gutter:clamp(20px,4vw,56px);
+  --wrap:1320px;
+  --header-h:68px;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  --ease-io:cubic-bezier(.65,0,.35,1);
+}
+@media (prefers-contrast:more){:root{--body:#d6d6d6;--muted:#c4c4c4;--line:rgba(255,255,255,.22);--line-2:rgba(255,255,255,.36)}}
+
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%;text-size-adjust:100%;scrollbar-color:#3d3d3d var(--bg);-webkit-tap-highlight-color:transparent}
+body{margin:0;min-height:100vh;background:radial-gradient(120% 70% at 50% -12%,#1b1b1b 0%,#0b0b0b 38%,var(--bg) 70%) fixed;color:var(--body);font:400 16px/1.6 var(--sans);font-size-adjust:from-font;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip}
+img,svg,canvas{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+h1,h2,h3,p,ul,ol,figure,blockquote{margin:0}
+ul[role=list],ol[role=list]{list-style:none;padding:0}
+::selection{background:#f2f2f2;color:#050505}
+:focus-visible{outline:2px solid #f2f2f2;outline-offset:4px;border-radius:2px}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important}
+.wrap{width:100%;max-width:calc(var(--wrap) + 2 * var(--gutter));margin:0 auto;padding:0 var(--gutter)}
+
+/* Lenis (smooth wheel scrolling); only active when motion is on */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:clip}
+
+.skip{position:fixed;left:16px;top:12px;z-index:200;padding:10px 16px;background:#f2f2f2;color:#050505;font-weight:600;border-radius:999px;transform:translateY(-160%);transition:transform .25s var(--ease)}
+.skip:focus-visible{transform:none;outline-color:#f2f2f2}
+
+/* Film grain: a static tile, so it costs one paint */
+.grain{position:fixed;inset:0;z-index:45;pointer-events:none;opacity:.075;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.1 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* Labels and type */
+.label{display:inline-flex;align-items:center;gap:.9em;font:500 11.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.label::before{content:"";width:22px;height:1px;background:var(--line-3)}
+.h2{font:500 clamp(40px,6vw,92px)/.96 var(--sans);letter-spacing:-.05em;color:var(--text)}
+.lede{max-width:46ch;color:var(--body);font-size:clamp(16px,1.25vw,18px);line-height:1.6}
+
+/* Header */
+.site-header{position:fixed;inset:0 0 auto 0;z-index:40;height:var(--header-h);display:flex;align-items:center;pointer-events:none}
+.site-header::before{content:"";position:absolute;inset:0 0 -28px;background:linear-gradient(to bottom,rgba(5,5,5,.9),rgba(5,5,5,.55) 55%,rgba(5,5,5,0));pointer-events:none}
+.header-inner{position:relative;display:flex;align-items:center;gap:clamp(14px,2vw,28px);pointer-events:auto}
+.brand{display:inline-flex;align-items:center;gap:12px;color:var(--text);font-weight:500;font-size:15px;letter-spacing:-.01em;white-space:nowrap;padding:6px 0}
+.mark{width:33px;height:24px;flex:none;overflow:visible}
+.mark path{fill:#f2f2f2;stroke:var(--bg);stroke-width:1.1;stroke-linejoin:round;transition:fill .5s var(--ease),stroke .5s var(--ease)}
+.motion .mark--live path{fill:transparent;stroke:rgba(255,255,255,.42)}
+.motion .mark--live path.on{fill:#f2f2f2;stroke:var(--bg)}
+.mark--pending path:last-child{fill:transparent;stroke:rgba(255,255,255,.42);stroke-dasharray:1.6 1.6}
+.mark-count{font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--muted);font-variant-numeric:tabular-nums;display:none}
+.motion .mark-count{display:inline}
+.nav{margin-left:auto}
+.nav ul{display:flex;gap:clamp(18px,2.4vw,34px);list-style:none;margin:0;padding:0}
+.nav a{position:relative;display:inline-block;padding:8px 0;font-size:14px;color:var(--body);transition:color .25s}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+.nav a:hover,.nav a[aria-current=page]{color:var(--text)}
+.nav a:hover::after,.nav a[aria-current=page]::after{transform:scaleX(1);transform-origin:left}
+
+/* Motion switch: a real switch; turning it off gives the same static layout as prefers-reduced-motion */
+.motion-switch{display:inline-flex;align-items:center;gap:10px;padding:8px 0;background:none;border:0;cursor:pointer;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.motion-switch:hover{color:var(--text)}
+.ms-track{position:relative;width:30px;height:16px;border:1px solid var(--line-3);border-radius:999px;flex:none}
+.ms-thumb{position:absolute;top:2px;left:2px;width:10px;height:10px;border-radius:50%;background:#8a8a8a;transition:transform .35s var(--ease),background .35s}
+.motion-switch[aria-checked=true] .ms-thumb{transform:translateX(14px);background:#f2f2f2}
+.motion-switch .ms-state::before{content:"Off"}
+.motion-switch[aria-checked=true] .ms-state::before{content:"On"}
+.header-inner .motion-switch{margin-left:clamp(4px,1vw,12px)}
+
+.menu-btn{display:none;margin-left:auto;align-items:center;gap:10px;padding:10px 0;background:none;border:0;cursor:pointer;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text)}
+.menu-btn .bars{display:grid;gap:5px;width:20px}
+.menu-btn .bars i{display:block;height:1px;background:currentColor}
+@media (max-width:899.98px){
+  .nav,.header-inner>.motion-switch,.mark-count{display:none!important}
+  .menu-btn{display:inline-flex}
+}
+
+/* Menu (mobile): a modal <dialog> so the page behind is inert and Escape/focus return work natively */
+.menu{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:rgba(5,5,5,.97);color:var(--text);opacity:0;transition:opacity .35s var(--ease),display .35s allow-discrete,overlay .35s allow-discrete}
+.menu[open]{display:flex;flex-direction:column;opacity:1}
+@starting-style{.menu[open]{opacity:0}}
+.menu::backdrop{background:transparent}
+.menu-top{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
+.menu-close{display:inline-flex;align-items:center;gap:10px;padding:10px 0;background:none;border:0;cursor:pointer;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text)}
+.menu nav{flex:1;display:flex;align-items:center}
+.menu ol{list-style:none;margin:0;padding:0;display:grid;gap:clamp(6px,2svh,18px);width:100%}
+.menu ol a{display:flex;align-items:baseline;gap:18px;font:500 clamp(40px,12vw,64px)/1 var(--sans);letter-spacing:-.05em;color:var(--text);padding:4px 0}
+.menu ol a span{font:500 11px/1 var(--mono);letter-spacing:.14em;color:var(--muted)}
+.menu-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:22px 0 calc(22px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:no-preference){
+  .motion .menu[open] ol li{animation:menu-in .7s var(--ease) both}
+  .motion .menu[open] ol li:nth-child(2){animation-delay:.05s}
+  .motion .menu[open] ol li:nth-child(3){animation-delay:.1s}
+  .motion .menu[open] ol li:nth-child(4){animation-delay:.15s}
+}
+@keyframes menu-in{from{opacity:0;transform:translateY(24px)}}
+html.menu-open{overflow:clip}
+
+/* Links and buttons */
+.link{position:relative;color:var(--text);background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:2px;transition:background-size .45s var(--ease)}
+.link:hover{background-size:0 1px;background-position:100% 100%}
+.arrow{display:inline-block;width:.8em;height:.8em;flex:none}
+.btn{position:relative;display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:0 24px;border-radius:999px;border:1px solid var(--line-3);font-weight:500;font-size:15px;letter-spacing:-.005em;color:var(--text);transition:background-color .3s,border-color .3s,color .3s}
+.btn:hover{border-color:#f2f2f2}
+.btn--solid{background:#f2f2f2;border-color:#f2f2f2;color:#050505}
+.btn--solid:hover{background:#ffffff}
+[data-magnetic]{transition:translate .6s var(--ease)}
+
+/* Footer */
+.site-footer{position:relative;z-index:2;padding:clamp(64px,10vw,120px) 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+.foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:36px 48px}
+.foot-name{color:var(--text);font:500 clamp(28px,3.4vw,44px)/1 var(--sans);letter-spacing:-.045em}
+.foot-place{margin-top:12px;font:500 11.5px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.foot-links{display:flex;flex-wrap:wrap;gap:12px 28px;list-style:none;margin:0;padding:0;align-self:flex-end;font-size:15px}
+.foot-links a{color:var(--body);transition:color .25s}
+.foot-links a:hover{color:var(--text)}
+.foot-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:clamp(48px,7vw,88px);padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+/* Print: plain black on white, everything in its final place */
+@media print{
+  :root{--text:#000000;--body:#222222;--muted:#444444;--dim:#444444;--line:rgba(0,0,0,.2);--line-2:rgba(0,0,0,.3);--line-3:rgba(0,0,0,.45)}
+  html,body{background:#ffffff!important;color:#222222}
+  .gl,.grain,.skip,.cursor-ring,.cursor-dot,.menu,.menu-btn,.motion-switch,.mark-count,.scroll-cue,.shards,.board-slots,.sweep,.nm-slice,.nm-lit,.xp-year,.pz-glint,.card-glint{display:none!important}
+  .site-header{position:static}
+  *,*::before,*::after{opacity:1!important;transform:none!important;translate:none!important;rotate:none!important;scale:none!important;animation:none!important;transition:none!important}
+  .nm-base,.statement .w,.edu-voice{color:inherit!important}
+  .pz-fill{fill:#ffffff!important}
+  .pz-line{stroke:rgba(0,0,0,.35)!important}
+  .card-surface{background:none!important;border-color:rgba(0,0,0,.3)!important}
+  .btn{border-color:#000000!important;background:none!important;color:#000000!important}
+}
+
+/* Custom cursor (fine pointers, motion on). Difference blending keeps it visible on any grey. */
+.has-cursor,.has-cursor *{cursor:none!important}
+.cursor-ring,.cursor-dot{position:fixed;left:0;top:0;z-index:300;pointer-events:none;mix-blend-mode:difference;opacity:0;transition:opacity .3s}
+.cursor-ring{width:36px;height:36px;border:1px solid #ffffff;border-radius:18px}
+.cursor-dot{width:6px;height:6px;border-radius:50%;background:#ffffff}
+.cursor-ring.is-down{border-width:2px}

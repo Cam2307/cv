@@ -1,0 +1,30 @@
+/* "Coming soon" pages: a 3×3 puzzle with its centre piece still to be placed. */
+
+.soon{position:relative;z-index:2;min-height:100svh;display:flex;align-items:center;padding:calc(var(--header-h) + 48px) 0 clamp(64px,10svh,120px)}
+.soon:focus{outline:none}
+.soon-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:center}
+.soon-title{margin:22px 0 24px;font:530 clamp(56px,9vw,148px)/.92 var(--sans);letter-spacing:-.06em;color:var(--text)}
+.soon-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+
+.soon-board{position:relative;margin:0;justify-self:center;width:min(100%,440px)}
+.soon-board::before{content:"";position:absolute;inset:-18%;z-index:-1;background:radial-gradient(closest-side,rgba(255,255,255,.07),rgba(255,255,255,0));pointer-events:none}
+.soon-svg{width:100%;height:auto;overflow:visible}
+.sb-set path{fill:url(#sb-grad);stroke:rgba(255,255,255,.16);stroke-width:1;stroke-linejoin:round}
+.sb-slot{fill:rgba(255,255,255,.025);stroke:rgba(255,255,255,.36);stroke-width:1;stroke-dasharray:4 5}
+.sb-shadow{fill:#000000;opacity:.55;filter:url(#sb-blur)}
+.sb-float{transform-box:fill-box;transform-origin:center;transform:translate(26px,-74px) rotate(-10deg)}
+.sb-piece{fill:url(#sb-lift);stroke:rgba(255,255,255,.5);stroke-width:1;stroke-linejoin:round}
+.sb-glint{fill:none;stroke:#ffffff;stroke-width:1.4;stroke-linecap:round;stroke-dasharray:.12 .88;stroke-dashoffset:.12;opacity:0}
+
+@media (prefers-reduced-motion:no-preference){
+  .motion .sb-float{animation:sb-bob 7s var(--ease-io) infinite}
+  .motion .sb-glint{animation:sb-run 5.5s var(--ease-io) infinite}
+}
+@keyframes sb-bob{0%,100%{transform:translate(26px,-74px) rotate(-10deg)}50%{transform:translate(26px,-86px) rotate(-6.5deg)}}
+@keyframes sb-run{0%{stroke-dashoffset:.12;opacity:0}8%,50%{opacity:.85}60%,100%{stroke-dashoffset:-.88;opacity:0}}
+
+@media (max-width:899.98px){
+  .soon{align-items:flex-start}
+  .soon-grid{grid-template-columns:minmax(0,1fr)}
+  .soon-board{order:-1;justify-self:start;width:min(64vw,280px);margin-top:28px}
+}
