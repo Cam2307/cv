@@ -4,20 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>About · Cameron Reece Allcock</title>
-<meta name="description" content="About: coming soon. A longer introduction to Cameron Reece Allcock, in his own words.">
+<meta name="description" content="About Cameron Reece Allcock: software developer, algorithmic trader and MQL5 expert in Ballito, KwaZulu-Natal. Flutter, AI fintech, and contact-centre engineering.">
 <meta name="theme-color" content="#050505">
 <link rel="icon" href="../assets/img/favicon-cv.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/cv/base.css">
-<link rel="stylesheet" href="../assets/cv/soon.css">
-<script>
-  (function () {
-    var h = document.documentElement, p = null;
-    h.classList.add('js');
-    try { p = localStorage.getItem('cv-motion'); } catch (e) {}
-    if (p ? p === 'on' : !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('motion');
-  })();
-</script>
+<link rel="stylesheet" href="../assets/cv/pages.css">
 <script defer src="../assets/cv/site.js"></script>
 </head>
 <body>
@@ -45,7 +37,6 @@
         <li><a href="../mql5/">MQL5</a></li>
       </ul>
     </nav>
-    <button class="motion-switch" type="button" role="switch" aria-checked="false"><span>Motion</span><span class="ms-track" aria-hidden="true"><span class="ms-thumb"></span></span><span class="ms-state" aria-hidden="true"></span></button>
     <button class="menu-btn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu">Menu<span class="bars" aria-hidden="true"><i></i><i></i></span></button>
   </div>
 </header>
@@ -64,47 +55,51 @@
     </ol>
   </nav>
   <div class="wrap menu-foot">
-    <button class="motion-switch" type="button" role="switch" aria-checked="false"><span>Motion</span><span class="ms-track" aria-hidden="true"><span class="ms-thumb"></span></span><span class="ms-state" aria-hidden="true"></span></button>
     <a class="link" href="https://linkedin.com/in/cameron-allcock-663b5099" rel="noopener">LinkedIn</a>
   </div>
 </dialog>
 
-<main class="soon" id="main" tabindex="-1">
-  <div class="wrap soon-grid">
-    <div class="soon-copy">
-      <p class="label">Coming soon</p>
-      <h1 class="soon-title">About</h1>
-      <p class="lede">A longer introduction, in my own words, is on its way. Until then, the landing page has the short version and LinkedIn has the rest.</p>
-      <div class="soon-cta">
-          <a class="btn btn--solid" href="../" data-magnetic>Back to the landing page</a>
-          <a class="btn" href="https://linkedin.com/in/cameron-allcock-663b5099" rel="noopener" data-magnetic>LinkedIn</a>
+<main class="page" id="main" tabindex="-1">
+  <div class="wrap">
+    <header class="page-hero">
+      <p class="label">Introduction</p>
+      <h1 class="h2">About</h1>
+      <p class="lede">Software Developer · Algorithmic Trader · MQL5 Expert (10k+ downloads) · Flutter &amp; AI Fintech — in my words, from Ballito, KwaZulu-Natal.</p>
+    </header>
+
+    <div class="prose">
+      <p>I’m <strong>Cameron Reece Allcock</strong>, based in Ballito on South Africa’s KwaZulu-Natal coast. I recently left FuelU2 to pursue my own practice in the wider AI and IT industries.</p>
+      <p>My work spans production software (C#, TypeScript/React, Flutter), AI and fintech, algorithmic trading and MQL5 Expert Advisors for MetaTrader&nbsp;5, Python for quantitative finance and machine learning, and contact-centre telephony (Five9 and Genesys Cloud—chatbots, voice routing, and IVR). The through-line is building systems that hold up under real operational pressure: global support queues at night, fleet platforms in the field, and published trading tools with a public install base.</p>
+      <p>At Pivotal Data (acquired by Connect) I grew from IT intern to Support Engineer and night-shift team lead for global enterprise accounts—including Quest Diagnostics, King Price Insurance, Coca-Cola Beverages South Africa, and Bupa. That path taught me how to communicate clearly with distributed teams and how to own complex telephony configurations end to end.</p>
+      <p>At FuelU2 I shipped full-stack features for a Southern African diesel fuelling and fleet-management network: mobile apps, web platforms, backend services, telematics integrations, and user-facing video guides.</p>
+      <p>On my own time I design and publish Expert Advisors on the <a class="link" href="../mql5/">MQL5 Market</a>; the landing page and <a class="link" href="../projects/">Projects</a> point to public listings only—no undisclosed strategy logic or performance claims here.</p>
+
+      <h2>Education</h2>
+      <div class="edu-list">
+        <div class="edu-item">
+          <h3>University of Pretoria</h3>
+          <p>Bachelor of Commerce (BCom) Business Management · 2019–2021 · <strong>Not completed</strong></p>
+          <p>I studied for the knowledge, not the certificate at the end. I left to pursue a business venture that ultimately failed. I still list these years because they were busy and productive—part of my story, not an excuse.</p>
+        </div>
+        <div class="edu-item">
+          <h3>University of Cape Town</h3>
+          <p>Future of Money: Blockchain and Cryptocurrency · 2022</p>
+          <span class="tag">Certificate scan pending on site</span>
+        </div>
+        <div class="edu-item">
+          <h3>St. Albans College</h3>
+          <p>Grade 12 / National Senior Certificate (Matric) · 2013–2017</p>
+        </div>
       </div>
+
+      <h2>Find me</h2>
+      <p><a class="link" href="https://linkedin.com/in/cameron-allcock-663b5099" rel="noopener">LinkedIn</a> · <a class="link" href="../mql5/">MQL5 Expert Advisors</a> · <a class="link" href="https://www.mql5.com/en/users/camerona/seller" rel="noopener">MQL5 seller profile</a></p>
     </div>
-    <figure class="soon-board" aria-hidden="true">
-      <svg class="soon-svg" viewBox="0 0 356 356" focusable="false">
-        <defs>
-          <linearGradient id="sb-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1a1a"/><stop offset="1" stop-color="#0b0b0b"/></linearGradient>
-          <linearGradient id="sb-lift" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2a2a"/><stop offset="1" stop-color="#121212"/></linearGradient>
-          <filter id="sb-blur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="10"/></filter>
-        </defs>
-        <g class="sb-set">
-        <path d="M34 34L130 34L130 67.29C130 75.26 128.59 78.77 124.61 77.37C120.62 75.96 119.69 69.4 113.36 70.33C106.8 71.27 104.92 77.37 104.92 82.29C104.92 87.21 106.8 93.3 113.36 94.24C119.69 95.18 120.62 88.62 124.61 87.21C128.59 85.8 130 89.32 130 97.29L130 130L100.2 130C92.32 130 88.84 128.61 90.24 124.67C91.63 120.73 98.12 119.8 97.19 113.54C96.26 107.05 90.24 105.2 85.37 105.2C80.5 105.2 74.47 107.05 73.55 113.54C72.62 119.8 79.11 120.73 80.5 124.67C81.89 128.61 78.41 130 70.53 130L34 130L34 34Z"/>
-        <path d="M130 34L226 34L226 67.29C226 75.26 227.41 78.78 231.39 77.37C235.37 75.96 236.31 69.4 242.64 70.34C249.2 71.28 251.08 77.37 251.08 82.29C251.08 87.21 249.2 93.31 242.64 94.25C236.31 95.18 235.37 88.62 231.39 87.21C227.41 85.81 226 89.32 226 97.29L226 130L193.36 130C185.1 130 181.45 131.46 182.91 135.59C184.37 139.72 191.18 140.69 190.2 147.26C189.23 154.06 182.91 156.01 177.81 156.01C172.7 156.01 166.38 154.06 165.41 147.26C164.44 140.69 171.25 139.72 172.7 135.59C174.16 131.46 170.52 130 162.25 130L130 130L130 97.29C130 89.32 128.59 85.8 124.61 87.21C120.62 88.62 119.69 95.18 113.36 94.24C106.8 93.3 104.92 87.21 104.92 82.29C104.92 77.37 106.8 71.27 113.36 70.33C119.69 69.4 120.62 75.96 124.61 77.37C128.59 78.77 130 75.26 130 67.29L130 34Z"/>
-        <path d="M226 34L322 34L322 130L290.81 130C282.75 130 279.19 131.42 280.61 135.45C282.04 139.48 288.67 140.43 287.73 146.83C286.78 153.47 280.61 155.37 275.63 155.37C270.66 155.37 264.49 153.47 263.54 146.83C262.59 140.43 269.23 139.48 270.66 135.45C272.08 131.42 268.52 130 260.46 130L226 130L226 97.29C226 89.32 227.41 85.81 231.39 87.21C235.37 88.62 236.31 95.18 242.64 94.25C249.2 93.31 251.08 87.21 251.08 82.29C251.08 77.37 249.2 71.28 242.64 70.34C236.31 69.4 235.37 75.96 231.39 77.37C227.41 78.78 226 75.26 226 67.29L226 34Z"/>
-        <path d="M34 130L70.53 130C78.41 130 81.89 128.61 80.5 124.67C79.11 120.73 72.62 119.8 73.55 113.54C74.47 107.05 80.5 105.2 85.37 105.2C90.24 105.2 96.26 107.05 97.19 113.54C98.12 119.8 91.63 120.73 90.24 124.67C88.84 128.61 92.32 130 100.2 130L130 130L130 160.7C130 168.25 131.33 171.58 135.11 170.25C138.89 168.92 139.77 162.7 145.77 163.58C151.99 164.47 153.77 170.25 153.77 174.91C153.77 179.58 151.99 185.35 145.77 186.24C139.77 187.13 138.89 180.91 135.11 179.58C131.33 178.25 130 181.58 130 189.13L130 226L95.76 226C87.82 226 84.32 227.4 85.72 231.37C87.12 235.34 93.66 236.27 92.72 242.57C91.79 249.11 85.72 250.98 80.82 250.98C75.92 250.98 69.85 249.11 68.91 242.57C67.98 236.27 74.52 235.34 75.92 231.37C77.32 227.4 73.82 226 65.88 226L34 226L34 130Z"/>
-        <path d="M226 130L260.46 130C268.52 130 272.08 131.42 270.66 135.45C269.23 139.48 262.59 140.43 263.54 146.83C264.49 153.47 270.66 155.37 275.63 155.37C280.61 155.37 286.78 153.47 287.73 146.83C288.67 140.43 282.04 139.48 280.61 135.45C279.19 131.42 282.75 130 290.81 130L322 130L322 226L287.29 226C279.3 226 275.77 224.59 277.18 220.6C278.59 216.6 285.17 215.66 284.23 209.32C283.29 202.74 277.18 200.86 272.25 200.86C267.32 200.86 261.21 202.74 260.27 209.32C259.33 215.66 265.91 216.6 267.32 220.6C268.72 224.59 265.2 226 257.21 226L226 226L226 193.86C226 185.93 227.4 182.43 231.36 183.83C235.33 185.23 236.26 191.76 242.56 190.83C249.09 189.89 250.95 183.83 250.95 178.93C250.95 174.03 249.09 167.97 242.56 167.04C236.26 166.1 235.33 172.64 231.36 174.03C227.4 175.43 226 171.94 226 164.01L226 130Z"/>
-        <path d="M34 226L65.88 226C73.82 226 77.32 227.4 75.92 231.37C74.52 235.34 67.98 236.27 68.91 242.57C69.85 249.11 75.92 250.98 80.82 250.98C85.72 250.98 91.79 249.11 92.72 242.57C93.66 236.27 87.12 235.34 85.72 231.37C84.32 227.4 87.82 226 95.76 226L130 226L130 254.43C130 262.56 131.44 266.15 135.5 264.71C139.57 263.28 140.53 256.58 146.99 257.54C153.69 258.49 155.6 264.71 155.6 269.74C155.6 274.76 153.69 280.99 146.99 281.94C140.53 282.9 139.57 276.2 135.5 274.76C131.44 273.33 130 276.92 130 285.05L130 322L34 322L34 226Z"/>
-        <path d="M130 226L165.84 226C174.06 226 177.68 227.45 176.23 231.56C174.78 235.67 168.01 236.63 168.98 243.16C169.95 249.92 176.23 251.86 181.3 251.86C186.38 251.86 192.66 249.92 193.63 243.16C194.6 236.63 187.83 235.67 186.38 231.56C184.93 227.45 188.55 226 196.77 226L226 226L226 258.14C226 265.53 224.7 268.79 221 267.48C217.31 266.18 216.44 260.09 210.57 260.96C204.48 261.83 202.74 267.48 202.74 272.05C202.74 276.61 204.48 282.27 210.57 283.14C216.44 284 217.31 277.92 221 276.61C224.7 275.31 226 278.57 226 285.96L226 322L130 322L130 285.05C130 276.92 131.44 273.33 135.5 274.76C139.57 276.2 140.53 282.9 146.99 281.94C153.69 280.99 155.6 274.76 155.6 269.74C155.6 264.71 153.69 258.49 146.99 257.54C140.53 256.58 139.57 263.28 135.5 264.71C131.44 266.15 130 262.56 130 254.43L130 226Z"/>
-        <path d="M226 226L257.21 226C265.2 226 268.72 224.59 267.32 220.6C265.91 216.6 259.33 215.66 260.27 209.32C261.21 202.74 267.32 200.86 272.25 200.86C277.18 200.86 283.29 202.74 284.23 209.32C285.17 215.66 278.59 216.6 277.18 220.6C275.77 224.59 279.3 226 287.29 226L322 226L322 322L226 322L226 285.96C226 278.57 224.7 275.31 221 276.61C217.31 277.92 216.44 284 210.57 283.14C204.48 282.27 202.74 276.61 202.74 272.05C202.74 267.48 204.48 261.83 210.57 260.96C216.44 260.09 217.31 266.18 221 267.48C224.7 268.79 226 265.53 226 258.14L226 226Z"/>
-        </g>
-        <path class="sb-slot" d="M130 130L162.25 130C170.52 130 174.16 131.46 172.7 135.59C171.25 139.72 164.44 140.69 165.41 147.26C166.38 154.06 172.7 156.01 177.81 156.01C182.91 156.01 189.23 154.06 190.2 147.26C191.18 140.69 184.37 139.72 182.91 135.59C181.45 131.46 185.1 130 193.36 130L226 130L226 164.01C226 171.94 227.4 175.43 231.36 174.03C235.33 172.64 236.26 166.1 242.56 167.04C249.09 167.97 250.95 174.03 250.95 178.93C250.95 183.83 249.09 189.89 242.56 190.83C236.26 191.76 235.33 185.23 231.36 183.83C227.4 182.43 226 185.93 226 193.86L226 226L196.77 226C188.55 226 184.93 227.45 186.38 231.56C187.83 235.67 194.6 236.63 193.63 243.16C192.66 249.92 186.38 251.86 181.3 251.86C176.23 251.86 169.95 249.92 168.98 243.16C168.01 236.63 174.78 235.67 176.23 231.56C177.68 227.45 174.06 226 165.84 226L130 226L130 189.13C130 181.58 131.33 178.25 135.11 179.58C138.89 180.91 139.77 187.13 145.77 186.24C151.99 185.35 153.77 179.58 153.77 174.91C153.77 170.25 151.99 164.47 145.77 163.58C139.77 162.7 138.89 168.92 135.11 170.25C131.33 171.58 130 168.25 130 160.7L130 130Z"/>
-        <path class="sb-shadow" d="M130 130L162.25 130C170.52 130 174.16 131.46 172.7 135.59C171.25 139.72 164.44 140.69 165.41 147.26C166.38 154.06 172.7 156.01 177.81 156.01C182.91 156.01 189.23 154.06 190.2 147.26C191.18 140.69 184.37 139.72 182.91 135.59C181.45 131.46 185.1 130 193.36 130L226 130L226 164.01C226 171.94 227.4 175.43 231.36 174.03C235.33 172.64 236.26 166.1 242.56 167.04C249.09 167.97 250.95 174.03 250.95 178.93C250.95 183.83 249.09 189.89 242.56 190.83C236.26 191.76 235.33 185.23 231.36 183.83C227.4 182.43 226 185.93 226 193.86L226 226L196.77 226C188.55 226 184.93 227.45 186.38 231.56C187.83 235.67 194.6 236.63 193.63 243.16C192.66 249.92 186.38 251.86 181.3 251.86C176.23 251.86 169.95 249.92 168.98 243.16C168.01 236.63 174.78 235.67 176.23 231.56C177.68 227.45 174.06 226 165.84 226L130 226L130 189.13C130 181.58 131.33 178.25 135.11 179.58C138.89 180.91 139.77 187.13 145.77 186.24C151.99 185.35 153.77 179.58 153.77 174.91C153.77 170.25 151.99 164.47 145.77 163.58C139.77 162.7 138.89 168.92 135.11 170.25C131.33 171.58 130 168.25 130 160.7L130 130Z" transform="translate(14 -16)"/>
-        <g class="sb-float">
-          <path class="sb-piece" d="M130 130L162.25 130C170.52 130 174.16 131.46 172.7 135.59C171.25 139.72 164.44 140.69 165.41 147.26C166.38 154.06 172.7 156.01 177.81 156.01C182.91 156.01 189.23 154.06 190.2 147.26C191.18 140.69 184.37 139.72 182.91 135.59C181.45 131.46 185.1 130 193.36 130L226 130L226 164.01C226 171.94 227.4 175.43 231.36 174.03C235.33 172.64 236.26 166.1 242.56 167.04C249.09 167.97 250.95 174.03 250.95 178.93C250.95 183.83 249.09 189.89 242.56 190.83C236.26 191.76 235.33 185.23 231.36 183.83C227.4 182.43 226 185.93 226 193.86L226 226L196.77 226C188.55 226 184.93 227.45 186.38 231.56C187.83 235.67 194.6 236.63 193.63 243.16C192.66 249.92 186.38 251.86 181.3 251.86C176.23 251.86 169.95 249.92 168.98 243.16C168.01 236.63 174.78 235.67 176.23 231.56C177.68 227.45 174.06 226 165.84 226L130 226L130 189.13C130 181.58 131.33 178.25 135.11 179.58C138.89 180.91 139.77 187.13 145.77 186.24C151.99 185.35 153.77 179.58 153.77 174.91C153.77 170.25 151.99 164.47 145.77 163.58C139.77 162.7 138.89 168.92 135.11 170.25C131.33 171.58 130 168.25 130 160.7L130 130Z"/>
-          <path class="sb-glint" d="M130 130L162.25 130C170.52 130 174.16 131.46 172.7 135.59C171.25 139.72 164.44 140.69 165.41 147.26C166.38 154.06 172.7 156.01 177.81 156.01C182.91 156.01 189.23 154.06 190.2 147.26C191.18 140.69 184.37 139.72 182.91 135.59C181.45 131.46 185.1 130 193.36 130L226 130L226 164.01C226 171.94 227.4 175.43 231.36 174.03C235.33 172.64 236.26 166.1 242.56 167.04C249.09 167.97 250.95 174.03 250.95 178.93C250.95 183.83 249.09 189.89 242.56 190.83C236.26 191.76 235.33 185.23 231.36 183.83C227.4 182.43 226 185.93 226 193.86L226 226L196.77 226C188.55 226 184.93 227.45 186.38 231.56C187.83 235.67 194.6 236.63 193.63 243.16C192.66 249.92 186.38 251.86 181.3 251.86C176.23 251.86 169.95 249.92 168.98 243.16C168.01 236.63 174.78 235.67 176.23 231.56C177.68 227.45 174.06 226 165.84 226L130 226L130 189.13C130 181.58 131.33 178.25 135.11 179.58C138.89 180.91 139.77 187.13 145.77 186.24C151.99 185.35 153.77 179.58 153.77 174.91C153.77 170.25 151.99 164.47 145.77 163.58C139.77 162.7 138.89 168.92 135.11 170.25C131.33 171.58 130 168.25 130 160.7L130 130Z" pathLength="1"/>
-        </g>
-      </svg>
-    </figure>
+
+    <div class="page-cta">
+      <a class="btn btn--solid" href="../experience/" data-magnetic>Experience</a>
+      <a class="btn" href="../" data-magnetic>Landing page</a>
+    </div>
   </div>
 </main>
 

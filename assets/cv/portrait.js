@@ -1,12 +1,10 @@
 /* The portrait, cut into jigsaw pieces.
-   PLACEHOLDER: assets/img/cameron.jpg is Cameron Reece Allcock's 200×200 LinkedIn photo, standing in
-   for a high-resolution portrait. It is never shown enlarged: it is redrawn as a fine line screen at
-   the screen's own resolution, so its low resolution can't show. When a hi-res photo arrives, replace
-   the file and adjust CROP (and LINE_PX if you want a finer screen). */
+   Source: assets/img/cameron-enhanced.jpg (800×800). Drawn as a halftone at display size.
+   Under file://, canvas read may fail; the feathered fallback <img> still shows. */
 (function () {
   'use strict';
   var NS = 'http://www.w3.org/2000/svg';
-  var CROP = { x: 25, y: 4, size: 150 };   // head and shoulders, in source pixels
+  var CROP = { x: 130, y: 70, size: 540 };   // head and shoulders, in source pixels (800×800)
   var LINE_PX = 3.4;                        // one line of the screen every ~3.4 CSS px
 
   function load(src) {
