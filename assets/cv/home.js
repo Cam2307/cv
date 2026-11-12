@@ -27,9 +27,12 @@
     if (finEl) puzzles.fin = Jigsaw.mount(finEl, { cells: ':scope > .fin-piece', maxT: tab(30, 19), seed: 5 });
   }
 
-  // The portrait board: 16 mating pieces carrying a halftone render of the photo (avatar inside phone mockup).
+  // Hero portrait jigsaw (optional): phone mockup uses a crisp static avatar instead.
   var phoneHero = $('.phone-hero');
-  var board = $('.board'), boardImg = board && $('.board-img', board), portrait = null;
+  var board = $('.board:not(.board--avatar)');
+  var boardImg = (board && $('.board-img', board)) || $('.profile-avatar img');
+  var portrait = null;
+  if (!board) html.classList.add('hero-static-portrait');
   var srcPromise = null, rendered = 0, htTimer = 0;
   function source() {
     if (!srcPromise) srcPromise = Portrait.load(boardImg.currentSrc || boardImg.src);
@@ -49,7 +52,7 @@
       });
     }).catch(fallback);
   }
-  if (board && boardImg && window.Portrait && window.Jigsaw) {
+  if (board && boardImg && window.Portrait && window.Jigsaw && !html.classList.contains('hero-static-portrait')) {
     portrait = Portrait.mountBoard(board, {
       n: 4, seed: 4,
       onLayout: function (S) { clearTimeout(htTimer); htTimer = setTimeout(function () { renderBoard(S); }, rendered ? 220 : 0); }
@@ -219,6 +222,7 @@
     ST.addEventListener('refreshInit', forget);
     cleanups.push(function () { ST.removeEventListener('refreshInit', forget); });
     function measure() {
+      if (!board) return { S: 300, slots: [], top: 0, bottom: 0, inner: 0, outer: 0 };
       var isAvatar = board.classList.contains('board--avatar');
       var anchor = phoneHero || board;
       var b = isAvatar ? board.getBoundingClientRect() : anchor.getBoundingClientRect();
@@ -306,7 +310,7 @@
     // The intro animates inner elements; the scroll timeline only touches their parents, so the two never fight.
     tl.fromTo('.scroll-cue', { opacity: 1 }, { opacity: 0, duration: 0.05 }, 0);
     tl.fromTo(CV, { light: 0 }, { light: 1, duration: 0.9 }, 0);
-    tl.fromTo(board, { '--seam': 0.34 }, { '--seam': 0.1, duration: 0.1 }, 0.8);
+    if (board && n) tl.fromTo(board, { '--seam': 0.34 }, { '--seam': 0.1, duration: 0.1 }, 0.8);
 
     order.forEach(function (p, idx) {
       p.t0 = 0.02 + idx * (0.6 / n);
@@ -323,10 +327,14 @@
         if (pzCount) pzCount.textContent = pad(locked);
       });
     });
-    var tPortrait = 0.02 + (n - 1) * (0.6 / n) + DUR;
-    locks.add(tPortrait, function () { setMark(0, true); board.classList.add('is-done'); pulse(0.7); },
-      function () { setMark(0, false); board.classList.remove('is-done'); });
-    tl.fromTo('.board-slots', { opacity: 1 }, { opacity: 0, duration: 0.08 }, tPortrait - 0.04);
+    var tPortrait = n ? 0.02 + (n - 1) * (0.6 / n) + DUR : 0.88;
+    if (board && n) {
+      locks.add(tPortrait, function () { setMark(0, true); board.classList.add('is-done'); pulse(0.7); },
+        function () { setMark(0, false); board.classList.remove('is-done'); });
+      tl.fromTo('.board-slots', { opacity: 1 }, { opacity: 0, duration: 0.08 }, tPortrait - 0.04);
+    } else {
+      locks.add(tPortrait, function () { setMark(0, true); pulse(0.45); }, function () { setMark(0, false); });
+    }
 
     // Role tiles slide in along their own line (never up or down into the name), then click into place.
     // They start pushed outward, outer tiles furthest, so neighbours never cross while sliding.
@@ -372,8 +380,8 @@
       gsap.ticker.remove(drift);
       io.disconnect();
       pieces.forEach(function (p) { gsap.set(p.float, { clearProps: 'transform,opacity' }); p.prog = 1; p.still = false; });
-      board.classList.remove('is-done');
-      if (pzCount) pzCount.textContent = pad(n);
+      if (board) board.classList.remove('is-done');
+      if (pzCount && n) pzCount.textContent = pad(n);
     });
     return { pieces: pieces };
   }
@@ -665,7 +673,7 @@
     lenisOff();
     glOff();
     marks.forEach(function (m) { m.classList.add('on'); });
-    if (pzCount) pzCount.textContent = '16';
+    if (pzCount) pzCount.textContent = board && portrait && portrait.pieces.length ? pad(portrait.pieces.length) : '16';
     CV.light = 0;
   }
 
