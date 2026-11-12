@@ -1,0 +1,54 @@
+commit: bac7a0999fa0506c37c22f0d33a37277df37cf2d
+preview_base_commit: 827986b184153b16a60d4fedb4c71581741a790a
+branch: cv-landing (local only, not pushed, not deployed)
+
+local_preview_url: http://127.0.0.1:8877/
+local_preview_port: 8877
+
+screenshots:
+  - preview/cv-2026-11-12/desktop-1-hero.jpg
+  - preview/cv-2026-11-12/desktop-2-mid.jpg
+  - preview/cv-2026-11-12/desktop-3-experience.jpg
+  - preview/cv-2026-11-12/desktop-4-certifications.jpg
+  - preview/cv-2026-11-12/desktop-5-about.jpg
+  - preview/cv-2026-11-12/desktop-6-projects.jpg
+  - preview/cv-2026-11-12/desktop-7-finale.jpg
+  - preview/cv-2026-11-12/reduced-motion-desktop.jpg
+  - preview/cv-2026-11-12/mobile-1-hero.jpg
+  - preview/cv-2026-11-12/mobile-2-experience.jpg
+  - preview/cv-2026-11-12/mobile-3-certifications.jpg
+
+certs_linked:
+  - Advanced Crypto strategies for Algorithmic trading 2024 (Udemy, 16 June 2025) -> assets/cv/certs/udemy-advanced-crypto-algorithmic-trading-2025.pdf (+ https://ude.my/UC-058c1e8a-5141-4096-9cb1-e494a4d061df)
+
+certs_listed_no_pdf:
+  - UCT Future of Money: Blockchain and Cryptocurrency (2022) [scan slot on home]
+  - Agentic AI for Developers (LinkedIn 2024)
+  - TensorFlow: Working with NLP (NASBA 2024)
+  - AI Model Compression Techniques (LinkedIn 2024)
+  - Deep Learning with Python and Keras: Sentiment Analysis (LinkedIn 2024)
+  - Building Deep Learning Applications with Keras (LinkedIn 2024)
+  - Deep Learning with Python: Convolutional Neural Networks (LinkedIn 2024)
+  - Deep Learning with Python: Optimizing Deep Learning Models (LinkedIn 2024)
+  - Applied Machine Learning: Feature Engineering (LinkedIn 2024)
+  - Applied Machine Learning: Algorithms (LinkedIn 2024)
+  - Financial Derivatives: Quantitative Finance (Udemy 2024)
+  - Algorithmic Trading & Finance Models (LinkedIn 2024)
+  - Python Statistics (NASBA 2024)
+  - Genesys Accredited Partner Presales Professional (2024)
+  - Five9 Sales Certified: Trade Center Prospect (2023)
+  - Five9 Inbound Administration, Outbound Administration, Contact Center Essentials
+
+cameron_must_supply:
+  - UCT physical certificate scan at assets/cv/certs/uct-future-of-money-blockchain-2022.pdf (or image) + enable link on card
+  - Optional PDFs for listed certs above
+  - FuelU2 end date when ready to publish (site says "until recently")
+
+leftover_issues:
+  - Tree zip backup under preview failed (locked); git bundle at C:\Users\camdw\Desktop\EA_Generator\ea-site-local-backup-827986b-2026-11-12.bundle
+  - Halftone jigsaw still needs HTTP (canvas taint under file://)
+  - HANDOVER_Website_Builder.md updated on disk (outside ea-site-local repo)
+  - http.server still running on 8877 until stopped
+  - CV_CONTENT_BRIEF_2026-11-12.md left untracked in repo
+
+report: preview/cv-2026-11-12/REPORT.md

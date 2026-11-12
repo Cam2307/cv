@@ -1,6 +1,6 @@
 # CV landing content pass — 12 Nov 2026 (SAST)
 
-**Branch:** `cv-landing` (local only) · **Base commit before work:** `827986b184153b16a60d4fedb4c71581741a790a`  
+**Branch:** `cv-landing` (local only) · **Commit after work:** `bac7a0999fa0506c37c22f0d33a37277df37cf2d` · **Base:** `827986b184153b16a60d4fedb4c71581741a790a`  
 **Backup:** git bundle `C:\Users\camdw\Desktop\EA_Generator\ea-site-local-backup-827986b-2026-11-12.bundle` · `preview/cv-2026-11-12/BACKUP_COMMIT.txt`
 
 ## What changed
