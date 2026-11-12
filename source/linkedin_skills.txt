@@ -1,0 +1,24 @@
+Skills (tabs: All, Industry Knowledge, Tools & Technologies, Other Skills)
+
+TypeScript — Software Developer at FuelU2
+Conversational AI — Five9 Sales Certified Triple Crown Recipient
+Intelligent Virtual Agents — Five9 Sales Certified Triple Crown Recipient
+CCaaS — Five9 Sales Certified Triple Crown Recipient
+Technical Presales — Genesys Accredited Partner Presales Professional
+Presales Technical Support — Genesys Accredited Partner Presales Professional
+TensorFlow — TensorFlow: Working with NLP
+Natural Language Processing (NLP) — TensorFlow: Working with NLP
+Sentiment Analysis — Deep Learning with Python and Keras: a Model For Sentiment Analysis
+Deep Neural Networks (DNN) — Building Deep Learning Applications with Keras
+Deep Neural Networks — Building Deep Learning Applications with Keras
+Application Development — Building Deep Learning Applications with Keras
+Convolutional Neural Networks (CNN) — Deep Learning with Python: Convolutional Neural Networks
+Computer Vision — Deep Learning with Python: Convolutional Neural Networks
+Deep Learning — Deep Learning with Python: Optimizing Deep Learning Models
+Keras — Deep Learning with Python: Optimizing Deep Learning Models; Building Deep Learning Applications with Keras
+Normalization — Deep Learning with Python: Optimizing Deep Learning Models
+Derivatives — Financial Derivatives (Quantitative Finance)
+Volatility Arbitrage — Financial Derivatives (Quantitative Finance)
+Stochastic Processes — Financial Derivatives (Quantitative Finance)
+
+Top skills (profile): Algorithmic Trading • Software Development • C++ • Python (Programming Language) • Machine Learning Algorithms

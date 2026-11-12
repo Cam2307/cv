@@ -1,0 +1,29 @@
+Cameron Allcock LinkedIn - headline: Software Developer | Algorithmic Trader | MQL5 Expert (10k+ Downloads) | Flutter & AI Fintech
+Followers: 549 (connections count not shown on activity page header; only Followers displayed)
+Counts below: reactions / comments (as shown; some posts show only one number)
+
+== OWN POSTS ==
+1. ~1yr: "I really enjoyed diving into this course - it balanced theory with practical coding exercises and real-world scenarios. Covered: Options pricing and arbitrage strategies; Risk-neutral pricing and Black-Scholes frameworks; Stochastic models and volatility surfaces; Greeks calculation and dynamic hedging; Monte Carlo simulation and finite-difference methods; Interest-rate and credit-derivative pricing; Python exercises (pricing engines, simulations, automated analysis). #FinancialDerivatives #QuantFinance #PythonFinance" (text possibly truncated after hashtags) | 6 reactions, 1 comment | 601 impressions
+2. ~1yr (edited): "Proud to share that I've earned four new certificates on machine learning and algorithmic trading through NASBA and LinkedIn Learning. Courses: Applied ML: Algorithms; Applied ML: Feature Engineering; Algorithmic Trading and Finance Models (Python, R, and Stata); Python Statistics Essentials. Excited to apply these concepts to real-world systems and keep building my skills in quantitative finance. #MachineLearning #AlgorithmicTrading #Python" | 5 reactions, 2 comments | 433 impressions
+3. ~1yr (edited): "I thoroughly enjoyed this course. It highlighted using Python libraries for machine learning on financial data and understanding how vectorized backtesting can dramatically accelerate strategy evaluation." | 5 reactions | 291 impressions
+4. ~1yr (edited): "I'm excited to share that I have started a new position at Lab27. I'm looking forward to the opportunities ahead and the chance to contribute to such a highly intelligent, innovative, and dynamic team." | 26 reactions, 6 comments | 760 impressions
+5. ~2yr: "I'm happy to share that I have obtained a new certification: Genesys Accredited Partner Presales Professional" | 18 reactions, 4 comments
+6. ~2yr: "Pleased to share that I have obtained a new certification: Genesys Accredited Partner Seller" | 17 reactions, 2 comments
+7. ~2yr (edited): "Proud to share these two Five9 certificates." | 2 reactions
+8. ~2yr (edited): "Very proud to share this certificate that I received earlier on in the year." | 9 reactions
+9. ~2yr: shared link https://lnkd.in/dSCB_HqE with Connect's post/eBook "Generative AI adoption in the contact centre" (15 pages) | counts not shown
+
+== REPOSTS (no own commentary) ==
+10. ~2yr CX Today: 20 Contact Center AI Use Cases to Transform Agent and Customer Experiences (cxtoday.com) | 10 reactions, 3 comments
+11. ~2yr CX Today: Contact Center Transformation: Cloud and AI / CCaaS migration, Five9 | 9, 2
+12. ~2yr Connect: Connect360 services suite (youtube) | 38 reactions, 1 comment, 15 reposts
+13. ~2yr Five9: Max Homa golf-season CX campaign | 63, 2
+14. ~2yr Simon Sinek: "You don't need to be the CEO to make an impact..." | 51,077 / 1,358
+15. ~2yr Connect: AI readiness / GenAI ROI in contact centre (weconnect.tech) | 35, 7
+16. ~2yr Genesys: 4 key elements of building an AI business case | 139, 1
+17. ~2yr CX Today: Salesforce: contact center agents spend 39% of time servicing customers | 20, 5
+18. ~2yr Genesys: Xperience 2024 event, Denver | 254, 1
+19. ~2yr Five9: TernioF9 mobile app with Ternio | 47, 12
+20. ~2yr Five9: Five9 IVA generative AI demo | 43, 11
+
+Own posts with text: 9 (8 + link share); reposts without commentary: 11. Total items: 20.

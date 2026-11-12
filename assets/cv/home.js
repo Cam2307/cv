@@ -27,7 +27,8 @@
     if (finEl) puzzles.fin = Jigsaw.mount(finEl, { cells: ':scope > .fin-piece', maxT: tab(30, 19), seed: 5 });
   }
 
-  // The portrait board: 16 mating pieces carrying a halftone render of the photo.
+  // The portrait board: 16 mating pieces carrying a halftone render of the photo (avatar inside phone mockup).
+  var phoneHero = $('.phone-hero');
   var board = $('.board'), boardImg = board && $('.board-img', board), portrait = null;
   var srcPromise = null, rendered = 0, htTimer = 0;
   function source() {
@@ -218,7 +219,8 @@
     ST.addEventListener('refreshInit', forget);
     cleanups.push(function () { ST.removeEventListener('refreshInit', forget); });
     function measure() {
-      var b = board.getBoundingClientRect(), s = stage.getBoundingClientRect();
+      var anchor = phoneHero || board;
+      var b = anchor.getBoundingClientRect(), s = stage.getBoundingClientRect();
       var cx = b.left + b.width / 2, cy = b.top + b.height / 2, S = b.width || 300;
       var gut = parseFloat(getComputedStyle(stage).paddingLeft) || 20;
       var head = $('.site-header').offsetHeight;
@@ -324,7 +326,7 @@
 
     tl.fromTo(lits, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.1, stagger: 0.025, ease: 'power2.inOut' }, 0.8);
     locks.add(0.95, function () { setMark(1, true); pulse(0.5); }, function () { setMark(1, false); });
-    tl.fromTo($('.sweep i', board), { xPercent: -120 }, { xPercent: 240, duration: 0.14, ease: 'power1.inOut' }, 0.84);
+    tl.fromTo($('.sweep i', phoneHero || board), { xPercent: -120 }, { xPercent: 240, duration: 0.14, ease: 'power1.inOut' }, 0.84);
     tl.to({}, { duration: 0.02 }, 0.98);
 
     // Idle drift and mouse parallax on the floating layer; it fades out as each piece locks.

@@ -1,0 +1,122 @@
+Licenses & certifications (15)
+
+Name: Five9 Sales Certified Triple Crown Recipient
+Issuer: Five9
+Issued: Jun 2023
+Credential ID: (none)
+Show credential URL: https://www.credly.com/badges/6fe9f705-7846-4c03-b287-950cda77d6b5/linked_in?t=rvr0um
+Media: Triple crown.png
+Saved file: five9-triple-crown-2023.jpg
+
+Name: Genesys Accredited Partner Presales Professional
+Issuer: Genesys
+Issued: Sep 2024
+Credential ID: (none)
+Show credential URL: (none)
+Media: Presales.jpg
+Saved file: genesys-presales-professional-2024.jpg
+
+Name: Agentic AI for Developers: Concepts and Application for Enterprises
+Issuer: LinkedIn
+Issued: Sep 2025
+Credential ID: dc19d9497e016b3fa15054f514b38297ce6f19675bcf36f4b9619af957af270a
+Show credential URL: https://www.linkedin.com/learning/certificates/dc19d9497e016b3fa15054f514b38297ce6f19675bcf36f4b9619af957af270a/
+Media: CertificateOfCompletion_Agentic AI for Developers Concepts and Application for Enterprises.pdf
+Saved file: (none)
+
+Name: TensorFlow: Working with NLP
+Issuer: NASBA
+Issued: Sep 2025
+Credential ID: d71d8c828783c91ca8e7a6754d5dd9749d5ec59de70dbac13f794dd0897ce00c
+Show credential URL: https://www.linkedin.com/learning/certificates/d71d8c828783c91ca8e7a6754d5dd9749d5ec59de70dbac13f794dd0897ce00c/?trk=share_certificate
+Media: CertificateOfCompletion_TensorFlow Working with NLP.pdf
+Saved file: (none)
+
+Name: AI Model Compression Techniques: Building Cheaper, Faster, and Greener AI
+Issuer: LinkedIn
+Issued: Sep 2025
+Credential ID: b60bb9a46b1000dbb6a162e2bcc88a0bc6738e6f500e8068e1a910054c85e241
+Show credential URL: https://www.linkedin.com/learning/certificates/b60bb9a46b1000dbb6a162e2bcc88a0bc6738e6f500e8068e1a910054c85e241/
+Media: CertificateOfCompletion_AI Model Compression Techniques Building Cheaper Faster and Greener AI.pdf
+Saved file: (none)
+
+Name: Deep Learning with Python and Keras: a Model For Sentiment Analysis
+Issuer: LinkedIn
+Issued: Sep 2025
+Credential ID: 433679f037df6b308a335fcbad965d533923841076f37139575da872076e5e27
+Show credential URL: https://www.linkedin.com/learning/certificates/433679f037df6b308a335fcbad965d533923841076f37139575da872076e5e27/
+Media: CertificateOfCompletion_Deep Learning with Python and Keras Build a Model For Sentiment Analysis.pdf
+Saved file: (none)
+
+Name: Building Deep Learning Applications with Keras
+Issuer: LinkedIn Learning Community
+Issued: Jul 2025
+Credential ID: 6d2619f22f322661ebd53d95e93d5469974133b653c0394198443ffb2f193d2c
+Show credential URL: https://www.linkedin.com/learning/certificates/6d2619f22f322661ebd53d95e93d5469974133b653c0394198443ffb2f193d2c/?trk=share_certificate
+Media: CertificateOfCompletion_Building Deep Learning Applications with Keras.pdf
+Saved file: (none)
+
+Name: Deep Learning with Python: Convolutional Neural Networks
+Issuer: LinkedIn Learning Community
+Issued: Jul 2025
+Credential ID: b9ca61934b18a439bd78553b8ecf9660069de5cd30461dbec087a456aa42997d
+Show credential URL: https://www.linkedin.com/learning/certificates/b9ca61934b18a439bd78553b8ecf9660069de5cd30461dbec087a456aa42997d/?trk=share_certificate
+Media: CertificateOfCompletion_Deep Learning with Python Convolutional Neural Networks.pdf
+Saved file: (none)
+
+Name: Deep Learning with Python: Optimizing Deep Learning Models
+Issuer: LinkedIn Learning Community
+Issued: Jul 2025
+Credential ID: e17270d80a62634bc633fe3ee900247dc611c5dd7c8743eaf099000208ad0c04
+Show credential URL: https://www.linkedin.com/learning/certificates/e17270d80a62634bc633fe3ee900247dc611c5dd7c8743eaf099000208ad0c04/?trk=share_certificate
+Media: CertificateOfCompletion_Deep Learning with Python Optimizing Deep Learning Models.pdf
+Saved file: (none)
+
+Name: Financial Derivatives (Quantitative Finance)
+Issuer: Udemy
+Issued: Jun 2025
+Credential ID: UC-7dd9661e-dec9-42c1-8f60-912d91c1b2b7
+Show credential URL: https://www.ude.my/UC-7dd9661e-dec9-42c1-8f60-912d91c1b2b7
+Media: UC-7dd9661e-dec9-42c1-8f60-912d91c1b2b7.jpg
+Saved file: udemy-financial-derivatives-2025.jpg
+
+Name: Algorithmic Trading and Finance Models with Python, R, and Stata
+Issuer: LinkedIn Learning Community
+Issued: Jun 2025
+Credential ID: ecccb0ac9e45ba3955bbaa8bbca837168b677474f7755b3a436de8dbd6570a1c
+Show credential URL: https://www.linkedin.com/learning/certificates/ecccb0ac9e45ba3955bbaa8bbca837168b677474f7755b3a436de8dbd6570a1c/?trk=share_certificate
+Media: CertificateOfCompletion_Algorithmic Trading and Finance Models with Python R and Stata Essential Training.pdf
+Saved file: (none)
+
+Name: Python Statistics
+Issuer: NASBA
+Issued: Jun 2025
+Credential ID: d74ea5f7701092c908f974d42abef4a837f2a1b28a0bbe79c8dc5a8464cd7a40
+Show credential URL: https://www.linkedin.com/learning/certificates/d74ea5f7701092c908f974d42abef4a837f2a1b28a0bbe79c8dc5a8464cd7a40/?trk=share_certificate
+Media: CertificateOfCompletion_Python Statistics Essential Training.pdf
+Saved file: (none)
+
+Name: Applied Machine Learning: Feature Engineering
+Issuer: LinkedIn Learning Community
+Issued: Jun 2025
+Credential ID: 37515d0662334acc76d46200d043a67d7008f25541e6c03ab76ffecc7cabb488
+Show credential URL: https://www.linkedin.com/learning/certificates/37515d0662334acc76d46200d043a67d7008f25541e6c03ab76ffecc7cabb488/?trk=share_certificate
+Media: CertificateOfCompletion_Applied Machine Learning Feature Engineering.pdf
+Saved file: (none)
+
+Name: Applied Machine Learning: Algorithms
+Issuer: LinkedIn Learning Community
+Issued: Jun 2025
+Credential ID: 51af95fcdaceecffc6e1836c85214428c3bd46088139586a62de08e2d1fe11ad
+Show credential URL: https://www.linkedin.com/learning/certificates/51af95fcdaceecffc6e1836c85214428c3bd46088139586a62de08e2d1fe11ad/?trk=share_certificate
+Media: CertificateOfCompletion_Applied Machine Learning Algorithms.pdf
+Saved file: (none)
+
+Name: Advanced Cryptocurrency Strategies for Algorithmic Trading
+Issuer: Udemy
+Issued: Jun 2025
+Credential ID: UC-058c1e8a-5141-4096-9cb1-e494a4d061df
+Show credential URL: https://www.ude.my/UC-058c1e8a-5141-4096-9cb1-e494a4d061df
+Media: (media item named "Advanced Cryptocurrency Strategies for Algorithmic Trading")
+Saved file: (none)
+
