@@ -1,24 +1,20 @@
-commit: 4c2f088257ad420d7dee812342b4af8fd010e905
+commit: 784f55d7500c1bf6fbac930ce62d7289603d682a
 branch: cv-landing (local only, not pushed, not deployed)
 
 local_preview_url: http://127.0.0.1:8790/
 
-fixes:
-  - Mobile/desktop avatar jigsaw clipped inside board--avatar; scatter uses avatar size so pieces do not cover phone profile text
-  - Mobile hero top padding so Ballito / 500+ connections clear the sticky header
-  - scroll-margin-top on home section anchors and subpage headings
-  - Five9 and Udemy Financial Derivatives cert-thumb hrefs point at local JPGs (View credential links unchanged)
+changes:
+  - Phone profile card rebuilt: airy spacing, short headline (middots), South Africa only (no Ballito inside phone)
+  - Two experience rows (F/P marks) and three cert chips (UCT, Five9 Triple Crown, Agentic AI); no dates in phone
+  - Sharp circular avatar from assets/img/enhanced_square.jpg — no jigsaw, halftone, scanline, or mask on phone photo
+  - Hero scroll still animates name/roles; portrait jigsaw removed from phone mockup (hero-static-portrait)
 
 screenshots:
   - preview/cv-2026-11-12/desktop-1-hero.jpg
   - preview/cv-2026-11-12/desktop-1b-assembled.jpg
-  - preview/cv-2026-11-12/desktop-3-experience.jpg
-  - preview/cv-2026-11-12/desktop-4-certifications.jpg
-  - preview/cv-2026-11-12/desktop-4b-certs-aiml.jpg
-  - preview/cv-2026-11-12/desktop-4c-certs-quant.jpg
-  - preview/cv-2026-11-12/desktop-4d-certs-cx.jpg
+  - preview/cv-2026-11-12/desktop-1c-phone-closeup.jpg
   - preview/cv-2026-11-12/mobile-1-hero.jpg
   - preview/cv-2026-11-12/mobile-1b-assembled.jpg
-  - preview/cv-2026-11-12/mobile-2-experience.jpg
-  - preview/cv-2026-11-12/mobile-3-certifications.jpg
-  - preview/cv-2026-11-12/mobile-3b-certs-aiml.jpg
+  - preview/cv-2026-11-12/mobile-1c-phone-closeup.jpg
+
+handover: C:\Users\camdw\Desktop\EA_Generator\handover\HANDOVER_Website_Builder.md updated (784f55d note)
