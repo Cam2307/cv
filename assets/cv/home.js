@@ -376,9 +376,12 @@
         if (free < 0.001 && e < 0.001) { if (!p.still) { p.sx(0); p.sy(0); p.sr(0); p.still = true; } continue; }
         p.still = false; idle = false;
         var side = p.j < 2 ? -1 : 1;
-        p.sx((Math.sin(t * (0.32 + r.a * 0.3) + r.b * 6.3) * 8 + mx * (16 + r.c * 44)) * free + side * (140 + r.e * 260) * e);
-        p.sy((Math.cos(t * (0.28 + r.b * 0.3) + r.c * 6.3) * 6 + my * (8 + r.d * 16)) * free + (r.f - 0.5) * 50 * e);
-        p.sr(Math.sin(t * (0.22 + r.d * 0.2) + r.a * 6.3) * 5 * free + side * (40 + r.a * 80) * e);
+        var throwX = narrow ? 24 + r.e * 36 : 140 + r.e * 260;
+        var throwR = narrow ? 10 + r.a * 16 : 40 + r.a * 80;
+        var throwY = narrow ? 22 : 50;
+        p.sx((Math.sin(t * (0.32 + r.a * 0.3) + r.b * 6.3) * 8 + mx * (16 + r.c * 44)) * free + side * throwX * e);
+        p.sy((Math.cos(t * (0.28 + r.b * 0.3) + r.c * 6.3) * 6 + my * (8 + r.d * 16)) * free + (r.f - 0.5) * throwY * e);
+        p.sr(Math.sin(t * (0.22 + r.d * 0.2) + r.a * 6.3) * 5 * free + side * throwR * e);
       }
       return idle;
     }
@@ -438,7 +441,7 @@
     function from(k, mobile) {
       var r = R[k];
       return mobile
-        ? { x: 60 + r.a * 50, y: 40, rotation: 4 + r.b * 6, opacity: 0 }
+        ? { x: 22 + r.a * 18, y: 20, rotation: 3 + r.b * 4, opacity: 0 }
         : { xPercent: 55 + r.a * 25, yPercent: 20 + r.b * 30, rotation: 6 + r.c * 8, rotationY: -38, opacity: 0 };
     }
     function to(extra) {
@@ -508,6 +511,31 @@
     locks.add(0.84, function () { cardGlint(card); pulse(0.35); });
   }
 
+  function scrollTilt(els, cleanups) {
+    els.forEach(function (el) {
+      gsap.set(el, { transformPerspective: 1000 });
+      var rx = gsap.quickTo(el, 'rotationX', { duration: 0.5, ease: 'power2.out' });
+      var ry = gsap.quickTo(el, 'rotationY', { duration: 0.5, ease: 'power2.out' });
+      var z = gsap.quickTo(el, 'z', { duration: 0.5, ease: 'power2.out' });
+      function reset() { rx(0); ry(0); z(0); el.style.zIndex = ''; }
+      var tween = gsap.fromTo(el, { rotationX: 0, rotationY: 0, z: 0 }, {
+        rotationX: 0, rotationY: 0, z: 0, ease: 'none',
+        scrollTrigger: {
+          trigger: el, start: 'top 88%', end: 'center 42%', scrub: 0.55, invalidateOnRefresh: true,
+          onUpdate: function (self) {
+            var tilt = (self.progress - 0.5) * 2;
+            ry(tilt * 7);
+            rx(-tilt * 5);
+            z(Math.abs(tilt) * 16);
+            el.style.zIndex = Math.abs(tilt) > 0.08 ? '3' : '';
+          },
+          onLeave: reset, onLeaveBack: reset
+        }
+      });
+      cleanups.push(function () { if (tween.scrollTrigger) tween.scrollTrigger.kill(); tween.kill(); reset(); gsap.set(el, { clearProps: 'transform' }); });
+    });
+  }
+
   function tilt(els, cleanups) {
     if (!mqFine.matches) return;
     els.forEach(function (el) {
@@ -539,11 +567,19 @@
       cells.forEach(function (c, k) {
         var r = R[k], l = Locks();
         gsap.fromTo(c,
-          { x: (k % 2 ? 1 : -1) * (70 + r.a * 60), y: 50, rotation: (k % 2 ? 1 : -1) * (8 + r.b * 10), opacity: 0 },
+          { x: (k % 2 ? 1 : -1) * (32 + r.a * 28), y: 36, rotation: (k % 2 ? 1 : -1) * (6 + r.b * 8), opacity: 0 },
           { x: 0, y: 0, rotation: 0, opacity: 1, duration: 1, ease: 'back.out(1.3)', onUpdate: function () { l.update(this.progress()); },
-            scrollTrigger: { trigger: c, start: 'top 98%', end: 'top 66%', scrub: 0.6 } });
+            scrollTrigger: { trigger: c, start: 'top 98%', end: 'top 66%', scrub: 0.6, invalidateOnRefresh: true } });
         l.add(1, function () { lockOne(c); }, unlockOne);
       });
+      var sweepN = $('.skills .sweep i');
+      if (sweepN) {
+        gsap.fromTo(sweepN, { xPercent: -120 }, {
+          xPercent: 340, ease: 'none',
+          scrollTrigger: { trigger: grid, start: 'top 52%', end: 'top 18%', scrub: 0.7, invalidateOnRefresh: true }
+        });
+      }
+      scrollTilt(cells, cleanups);
       return;
     }
     var locks = Locks();
@@ -616,11 +652,18 @@
       pcs.forEach(function (c, k) {
         var r = R[k], l = Locks();
         gsap.fromTo(c,
-          { x: (k % 2 ? 1 : -1) * (60 + r.a * 70), y: 60, rotation: (k % 2 ? 1 : -1) * (6 + r.b * 10), scale: 1.08, opacity: 0 },
+          { x: (k % 2 ? 1 : -1) * (32 + r.a * 36), y: 40, rotation: (k % 2 ? 1 : -1) * (5 + r.b * 8), scale: 1.06, opacity: 0 },
           { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 1, ease: 'back.out(1.25)', onUpdate: function () { l.update(this.progress()); },
-            scrollTrigger: { trigger: c, start: 'top 98%', end: 'top 64%', scrub: 0.6 } });
+            scrollTrigger: { trigger: c, start: 'top 98%', end: 'top 64%', scrub: 0.6, invalidateOnRefresh: true } });
         l.add(1, function () { glint(c); });
       });
+      var finSweep = $('.fin-board .sweep i');
+      if (finSweep) {
+        gsap.fromTo(finSweep, { xPercent: -120 }, {
+          xPercent: 340, ease: 'none',
+          scrollTrigger: { trigger: boardEl, start: 'top 58%', end: 'top 22%', scrub: 0.7, invalidateOnRefresh: true }
+        });
+      }
     }
     gsap.from(tail, { y: 24, opacity: 0, stagger: 0.08, ease: 'power2.out', scrollTrigger: { trigger: '.fin-lede', start: 'top 98%', end: 'top 74%', scrub: 0.6 } });
   }

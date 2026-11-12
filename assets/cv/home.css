@@ -95,7 +95,8 @@ html:not(.js) .board:not(.board--avatar){--board:clamp(240px,42vw,320px)}
 
 @media (max-width:959.98px){
   .hero{min-height:540px}
-  .hero-stage{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"left" "board" "right" "role" "name";align-content:center;justify-items:center;text-align:center;padding-top:calc(var(--header-h) + 18px);padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+  .hero-stage{overflow:clip;grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"left" "board" "right" "role" "name" "cue";align-content:center;justify-items:center;text-align:center;padding-top:calc(var(--header-h) + 18px);padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+  .board-pieces,.profile-avatar{overflow:clip}
   .hero-meta--left,.hero-meta--right{justify-self:center;text-align:center;align-self:auto;padding:0}
   .hero-meta--left{display:flex;flex-wrap:wrap;justify-content:center;column-gap:.7em;margin-top:4px;margin-bottom:clamp(12px,2.4svh,22px)}
   .hero-meta--left span:not(.hide-narrow)::before{content:"·";margin-right:.7em;color:var(--dim)}
@@ -108,7 +109,6 @@ html:not(.js) .board:not(.board--avatar){--board:clamp(240px,42vw,320px)}
   .role-tile+.role-tile::before{display:none}
   .hero-name{font-size:min(16vw,8.2svh,104px);line-height:.92;white-space:normal;margin-top:clamp(12px,2.2svh,22px)}
   .nm-word{display:block}
-  .scroll-cue{position:absolute;left:0;right:0;bottom:calc(12px + env(safe-area-inset-bottom));margin:0;text-align:center}
   .crop{display:none}
 }
 
@@ -161,12 +161,14 @@ html:not(.js) .board:not(.board--avatar){--board:clamp(240px,42vw,320px)}
   .xp-note{grid-row:5}
   .xp-card .client-chips{grid-row:6}
   .xp-card .skill-chips{grid-row:6}
-  .motion .xp-year{display:none}
+  .xp-head{overflow:hidden}
+  .motion .xp-year{display:block;margin-top:clamp(12px,2.5svh,24px);height:.88em;font-size:clamp(44px,13vw,68px);letter-spacing:-.05em}
+  .xp-year-roll .is-word{font-size:.5em;height:1.76em;line-height:1.76}
 }
 
 /* ---------- Education ---------- */
 .edu{padding:clamp(40px,8svh,100px) 0 clamp(80px,12svh,140px)}
-.edu-card{position:relative;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(28px,5vw,80px);padding:clamp(28px,4.5vw,64px)}
+.edu-card{position:relative;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(28px,5vw,80px);padding:clamp(28px,4.5vw,64px);overflow:clip}
 .edu-meta,.edu-voice{position:relative;z-index:1}
 .edu-meta .label{margin-bottom:18px}
 .edu-school{font:500 clamp(26px,2.6vw,38px)/1.1 var(--sans);letter-spacing:-.035em;color:var(--text)}
@@ -192,7 +194,7 @@ html:not(.js) .board:not(.board--avatar){--board:clamp(240px,42vw,320px)}
 .sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 48px;margin-bottom:clamp(40px,6svh,72px)}
 .sec-head .h2{margin-top:18px}
 .sec-head .lede{max-width:40ch}
-.skills-board{position:relative}
+.skills-board{position:relative;overflow:clip}
 .skills-grid{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:0;padding:0}
 .skill{min-height:clamp(200px,24svh,240px);padding:clamp(28px,2.6vw,40px) clamp(26px,2.4vw,36px);display:flex;flex-direction:column;gap:10px}
 .skill .ico{width:30px;height:30px;color:var(--text);flex:none;margin-bottom:auto}
