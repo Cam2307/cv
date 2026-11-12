@@ -42,6 +42,22 @@ ul[role=list],ol[role=list]{list-style:none;padding:0}
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important}
 .wrap{width:100%;max-width:calc(var(--wrap) + 2 * var(--gutter));margin:0 auto;padding:0 var(--gutter)}
 
+/* Sticky header: hash / scroll-into-view should leave titles fully below the nav */
+#top,
+.intro,
+#experience,
+#skills,
+#certifications,
+.finale,
+.intro .label,
+.xp-head .h2,
+.sec-head .h2,
+.finale .sec-head .h2,
+[id$="-title"].h2,
+[id$="-title"].label{
+  scroll-margin-top:calc(var(--header-h) + 20px);
+}
+
 /* Lenis (smooth wheel scrolling); only active when motion is on */
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}

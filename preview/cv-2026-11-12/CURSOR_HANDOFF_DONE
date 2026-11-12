@@ -1,57 +1,24 @@
-commit: f0bdaed9f97dc357185000f86c43169b77123b00
+commit: db2612d4ced9dec2cd26215059d7fd3d62353c8d
 branch: cv-landing (local only, not pushed, not deployed)
 
 local_preview_url: http://127.0.0.1:8790/
-local_preview_port: 8790
+
+fixes:
+  - Mobile/desktop avatar jigsaw clipped inside board--avatar; scatter uses avatar size so pieces do not cover phone profile text
+  - Mobile hero top padding so Ballito / 500+ connections clear the sticky header
+  - scroll-margin-top on home section anchors and subpage headings
+  - Five9 and Udemy Financial Derivatives cert-thumb hrefs point at local JPGs (View credential links unchanged)
 
 screenshots:
   - preview/cv-2026-11-12/desktop-1-hero.jpg
   - preview/cv-2026-11-12/desktop-1b-assembled.jpg
-  - preview/cv-2026-11-12/desktop-2-mid.jpg
   - preview/cv-2026-11-12/desktop-3-experience.jpg
   - preview/cv-2026-11-12/desktop-4-certifications.jpg
-  - preview/cv-2026-11-12/desktop-5-about.jpg
-  - preview/cv-2026-11-12/desktop-6-projects.jpg
-  - preview/cv-2026-11-12/desktop-7-finale.jpg
-  - preview/cv-2026-11-12/reduced-motion-desktop.jpg
+  - preview/cv-2026-11-12/desktop-4b-certs-aiml.jpg
+  - preview/cv-2026-11-12/desktop-4c-certs-quant.jpg
+  - preview/cv-2026-11-12/desktop-4d-certs-cx.jpg
   - preview/cv-2026-11-12/mobile-1-hero.jpg
+  - preview/cv-2026-11-12/mobile-1b-assembled.jpg
   - preview/cv-2026-11-12/mobile-2-experience.jpg
   - preview/cv-2026-11-12/mobile-3-certifications.jpg
-
-certs_linked:
-  - Agentic AI for Developers (LinkedIn Learning, Sep 2025) -> https://www.linkedin.com/learning/certificates/dc19d9497e016b3fa15054f514b38297ce6f19675bcf36f4b9619af957af270a/
-  - TensorFlow: Working with NLP (NASBA, Sep 2025) -> https://www.linkedin.com/learning/certificates/d71d8c828783c91ca8e7a6754d5dd9749d5ec59de70dbac13f794dd0897ce00c/
-  - AI Model Compression Techniques (LinkedIn Learning, Sep 2025) -> https://www.linkedin.com/learning/certificates/b60bb9a46b1000dbb6a162e2bcc88a0bc6738e6f500e8068e1a910054c85e241/
-  - Deep Learning with Python and Keras: a Model For Sentiment Analysis (LinkedIn Learning, Sep 2025) -> https://www.linkedin.com/learning/certificates/433679f037df6b308a335fcbad965d533923841076f37139575da872076e5e27/
-  - Building Deep Learning Applications with Keras (LinkedIn Learning, Jul 2025) -> https://www.linkedin.com/learning/certificates/6d2619f22f322661ebd53d95e93d5469974133b653c0394198443ffb2f193d2c/
-  - Deep Learning with Python: Convolutional Neural Networks (LinkedIn Learning, Jul 2025) -> https://www.linkedin.com/learning/certificates/b9ca61934b18a439bd78553b8ecf9660069de5cd30461dbec087a456aa42997d/
-  - Deep Learning with Python: Optimizing Deep Learning Models (LinkedIn Learning, Jul 2025) -> https://www.linkedin.com/learning/certificates/e17270d80a62634bc633fe3ee900247dc611c5dd7c8743eaf099000208ad0c04/
-  - Applied Machine Learning: Feature Engineering (LinkedIn Learning, Jun 2025) -> https://www.linkedin.com/learning/certificates/37515d0662334acc76d46200d043a67d7008f25541e6c03ab76ffecc7cabb488/
-  - Applied Machine Learning: Algorithms (LinkedIn Learning, Jun 2025) -> https://www.linkedin.com/learning/certificates/51af95fcdaceecffc6e1836c85214428c3bd46088139586a62de08e2d1fe11ad/
-  - Python Statistics (NASBA, Jun 2025) -> https://www.linkedin.com/learning/certificates/d74ea5f7701092c908f974d42abef4a837f2a1b28a0bbe79c8dc5a8464cd7a40/
-  - Financial Derivatives (Quantitative Finance) (Udemy, Jun 2025) -> https://www.ude.my/UC-7dd9661e-dec9-42c1-8f60-912d91c1b2b7
-  - Algorithmic Trading and Finance Models with Python, R, and Stata (LinkedIn Learning, Jun 2025) -> https://www.linkedin.com/learning/certificates/ecccb0ac9e45ba3955bbaa8bbca837168b677474f7755b3a436de8dbd6570a1c/
-  - Advanced Cryptocurrency Strategies for Algorithmic Trading (Udemy, Jun 2025) -> assets/cv/certs/udemy-advanced-crypto-algorithmic-trading-2025.pdf + https://www.ude.my/UC-058c1e8a-5141-4096-9cb1-e494a4d061df
-  - Five9 Sales Certified Triple Crown Recipient (Five9, Jun 2023) -> https://www.credly.com/badges/6fe9f705-7846-4c03-b287-950cda77d6b5/linked_in?t=rvr0um
-
-certs_listed_with_thumbnails:
-  - assets/cv/certs/five9-triple-crown-2023.jpg (Five9 Triple Crown, Credly link)
-  - assets/cv/certs/genesys-presales-professional-2024.jpg (Genesys Presales, no credential URL)
-  - assets/cv/certs/udemy-financial-derivatives-2025.jpg (Udemy derivatives, ude.my link)
-
-certs_featured_no_file:
-  - University of Cape Town · Blockchain and Digital Currency: The Future of Money · 2022 (scan slot assets/cv/certs/uct-future-of-money-blockchain-2022.pdf or .jpg)
-
-cameron_must_supply:
-  - UCT physical certificate scan at assets/cv/certs/uct-future-of-money-blockchain-2022.pdf or .jpg
-  - Optional PDFs for remaining LinkedIn/NASBA course certificates
-  - FuelU2 end month if he wants a fixed date instead of "until recently"
-  - Go-ahead to push / deploy
-
-leftover_issues:
-  - Genesys Accredited Partner Seller mentioned in experience copy only (not a licence card — correct per brief)
-  - Halftone jigsaw avatar still needs HTTP (not file://) for canvas
-  - CV_LINKEDIN_UPDATE_BRIEF.md and CV_CONTENT_BRIEF left untracked
-  - http.server on 8790 may still be running from prior session
-
-report: preview/cv-2026-11-12/REPORT.md
+  - preview/cv-2026-11-12/mobile-3b-certs-aiml.jpg

@@ -219,10 +219,28 @@
     ST.addEventListener('refreshInit', forget);
     cleanups.push(function () { ST.removeEventListener('refreshInit', forget); });
     function measure() {
+      var isAvatar = board.classList.contains('board--avatar');
       var anchor = phoneHero || board;
-      var b = anchor.getBoundingClientRect(), s = stage.getBoundingClientRect();
+      var b = isAvatar ? board.getBoundingClientRect() : anchor.getBoundingClientRect();
+      var s = stage.getBoundingClientRect();
       var cx = b.left + b.width / 2, cy = b.top + b.height / 2, S = b.width || 300;
       var gut = parseFloat(getComputedStyle(stage).paddingLeft) || 20;
+      if (isAvatar) {
+        /* Avatar pieces use the board’s real size so scatter offsets stay inside the square
+           (and CSS clips paint) instead of using the phone width and spilling over profile text. */
+        var pad = S * 0.08;
+        var top = -S / 2 + pad, bottom = S / 2 - pad;
+        var inner = S * 0.12, outer = narrow ? S * 0.4 : S * 0.46;
+        var cols = narrow ? 2 : 2, rows = narrow ? 4 : 3, slots = [];
+        [-1, 1].forEach(function (side) {
+          for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
+            var x0 = inner + (outer - inner) * (c + 0.5) / cols;
+            var y0 = top + (bottom - top) * (r + 0.5) / rows;
+            slots.push({ side: side, x: side * x0, y: y0, w: (outer - inner) / cols, h: (bottom - top) / rows });
+          }
+        });
+        return { S: S, slots: slots, top: top, bottom: bottom, inner: inner, outer: outer };
+      }
       var head = $('.site-header').offsetHeight;
       var floor = Math.min.apply(null, $$('.role, .hero-meta--right').map(function (e) { return e.getBoundingClientRect().top; }));
       if (!narrow) floor = Math.min(floor, $('.hero-meta--left').getBoundingClientRect().top);

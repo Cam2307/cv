@@ -1,6 +1,11 @@
 /* Content subpages: Experience, About, Projects, Certifications index */
 
 .page{padding:calc(var(--header-h) + clamp(48px,8svh,96px)) 0 clamp(72px,12svh,120px)}
+.page .h2,
+.page > .wrap > h1,
+.page > .wrap > section > h2{
+  scroll-margin-top:calc(var(--header-h) + 20px);
+}
 .page-hero{padding-bottom:clamp(40px,6svh,72px);border-bottom:1px solid var(--line);margin-bottom:clamp(40px,6svh,72px)}
 .page-hero .h2{margin-top:clamp(16px,2.5vw,24px)}
 .page-hero .lede{margin-top:clamp(14px,2vw,20px)}

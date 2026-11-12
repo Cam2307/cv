@@ -66,8 +66,11 @@ async def main():
             has_touch=True,
         )
         page = await ctx.new_page()
+        await assemble_hero(page)
+        await shot(page, "mobile-1b-assembled.jpg")
         await page.goto(BASE + "/", wait_until="networkidle", timeout=60000)
         await settle(page, 800)
+        await shot(page, "mobile-1-hero.jpg")
         await page.locator("#xp-title").scroll_into_view_if_needed()
         await page.evaluate("window.scrollBy(0, -70)")
         await settle(page, 900)
