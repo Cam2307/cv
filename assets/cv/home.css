@@ -94,8 +94,8 @@ html:not(.js) .board:not(.board--avatar){--board:clamp(240px,42vw,320px)}
 .crop--br{right:var(--gutter);bottom:clamp(18px,3svh,34px);border-right-width:1px;border-bottom-width:1px}
 
 @media (max-width:959.98px){
-  .hero{min-height:540px}
-  .hero-stage{overflow:clip;grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"left" "board" "right" "role" "name" "cue";align-content:center;justify-items:center;text-align:center;padding-top:calc(var(--header-h) + 18px);padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+  .hero{min-height:max(540px,100svh);height:auto;overflow-x:clip;overflow-y:visible}
+  .hero-stage{height:auto;overflow-x:clip;overflow-y:visible;grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"left" "board" "right" "role" "name" "cue";align-content:start;justify-items:center;text-align:center;padding-top:calc(var(--header-h) + env(safe-area-inset-top,0px) + clamp(16px,3svh,28px));padding-bottom:calc(clamp(28px,5svh,48px) + env(safe-area-inset-bottom))}
   .board-pieces,.profile-avatar{overflow:clip}
   .hero-meta--left,.hero-meta--right{justify-self:center;text-align:center;align-self:auto;padding:0}
   .hero-meta--left{display:flex;flex-wrap:wrap;justify-content:center;column-gap:.7em;margin-top:4px;margin-bottom:clamp(12px,2.4svh,22px)}
@@ -107,8 +107,10 @@ html:not(.js) .board:not(.board--avatar){--board:clamp(240px,42vw,320px)}
   .role{gap:6px;margin-top:clamp(12px,2.2svh,22px);font-size:12.5px;max-width:370px}
   .role-tile{padding:5px 10px;border:1px solid var(--line-2);border-radius:999px}
   .role-tile+.role-tile::before{display:none}
-  .hero-name{font-size:min(16vw,8.2svh,104px);line-height:.92;white-space:normal;margin-top:clamp(12px,2.2svh,22px)}
+  .hero-name{font-size:min(16vw,7.6svh,104px);line-height:1;white-space:normal;margin-top:clamp(12px,2.2svh,22px);padding-bottom:clamp(6px,1.2svh,14px)}
   .nm-word{display:block}
+  .motion .hero-name .nm-slice{display:none}
+  .motion .hero-name .nm-lit{position:relative;top:auto;left:auto;width:auto;display:block;white-space:nowrap;clip-path:none}
   .crop{display:none}
 }
 

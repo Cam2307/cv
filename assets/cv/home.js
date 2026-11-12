@@ -349,7 +349,11 @@
     });
     locks.add(0.76, function () { setMark(2, true); }, function () { setMark(2, false); });
 
-    tl.fromTo(lits, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.1, stagger: 0.025, ease: 'power2.inOut' }, 0.8);
+    if (narrow) {
+      tl.fromTo(lits, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.14, ease: 'expo.out' }, 0.78);
+    } else {
+      tl.fromTo(lits, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.1, stagger: 0.025, ease: 'power2.inOut' }, 0.8);
+    }
     locks.add(0.95, function () { setMark(1, true); pulse(0.5); }, function () { setMark(1, false); });
     tl.fromTo($('.sweep i', phoneHero || board), { xPercent: -120 }, { xPercent: 240, duration: 0.14, ease: 'power1.inOut' }, 0.84);
     tl.to({}, { duration: 0.02 }, 0.98);
@@ -397,11 +401,15 @@
     return { pieces: pieces };
   }
 
-  function intro(hero) {
+  function intro(hero, narrow) {
     var tl = gsap.timeline({ delay: 0.05, defaults: { ease: 'expo.out' } });
     var offs = [-26, 18, -10, 22, -14, 27, -17, 12, -24];
     tl.from('.header-inner', { y: -14, opacity: 0, duration: 1.2 }, 0.15);
-    tl.from('.nm-slice', { xPercent: function (i) { return offs[i % offs.length]; }, opacity: 0, duration: 1.9, stagger: 0.04 }, 0.1);
+    if (narrow) {
+      tl.from('.hero-name .nm-lit', { opacity: 0, y: 14, duration: 1.3, stagger: 0.16, ease: 'expo.out' }, 0.1);
+    } else {
+      tl.from('.nm-slice', { xPercent: function (i) { return offs[i % offs.length]; }, opacity: 0, duration: 1.9, stagger: 0.04 }, 0.1);
+    }
     if (hero && hero.pieces.length) {
       var floats = hero.pieces.map(function (p) { return p.float; });
       var enters = hero.pieces.map(function (p) { p.enter.v = 1; return p.enter; });
@@ -706,7 +714,7 @@
       buildSkills(narrow, cleanups);
       buildCerts(narrow);
       buildFinale(narrow, tall);
-      if (first && scrollY < innerHeight * 0.4) introTl = intro(hero);
+      if (first && scrollY < innerHeight * 0.4) introTl = intro(hero, narrow);
       first = false;
       return function () {
         cleanups.forEach(function (f) { f(); });

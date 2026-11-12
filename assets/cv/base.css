@@ -111,6 +111,8 @@ html.lenis,html.lenis body{height:auto}
 @media (max-width:899.98px){
   .nav,.header-inner>.motion-switch,.mark-count{display:none!important}
   .menu-btn{display:inline-flex}
+  .site-header{padding-top:env(safe-area-inset-top,0px)}
+  .header-inner{min-height:var(--header-h)}
 }
 
 /* Menu (mobile): a modal <dialog> so the page behind is inert and Escape/focus return work natively */
