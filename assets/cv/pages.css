@@ -21,10 +21,12 @@
 .role-when{font:500 12px/1.4 var(--mono);color:var(--muted);margin-bottom:16px}
 .role-block ul{margin:12px 0 0;padding:0 0 0 1.15em;color:var(--body);font-size:15px;line-height:1.65}
 .role-block li+li{margin-top:8px}
+.skill-chips{display:flex;flex-wrap:wrap;gap:6px 8px;list-style:none;margin:14px 0 0;padding:0}
+.skill-chip{font:500 10.5px/1.4 var(--mono);letter-spacing:.03em;color:var(--body);border:1px solid var(--line);border-radius:3px;padding:6px 10px}
 .client-chips{display:flex;flex-wrap:wrap;gap:6px 8px;list-style:none;margin:14px 0 0;padding:0}
 .client-chips--role{margin-top:16px}
 .client-chip{font:500 10.5px/1.4 var(--mono);letter-spacing:.03em;color:var(--body);border:1px solid var(--line);border-radius:3px;padding:6px 10px}
-.client-chip-loc{display:block;margin-top:3px;font-size:9.5px;letter-spacing:.05em;color:var(--muted);text-transform:none}
+.client-chip-loc{display:inline}
 .client-chip--key{border-color:var(--line-2);color:var(--text);font-weight:600;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
 .client-chip--key .client-chip-loc{color:var(--body);font-weight:500;opacity:.82}
 .role-block p{font-size:15px;line-height:1.65;color:var(--body)}

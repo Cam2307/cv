@@ -301,14 +301,13 @@
         // Someone scrolling straight away shouldn't catch the intro half-finished.
         if (introTl && time > 0.01 && introTl.isActive() && introTl.timeScale() < 3) introTl.timeScale(3);
       },
+      // No pin: a 1.5-viewport pin made the first scroll feel stuck once the hero card was static.
       scrollTrigger: {
-        trigger: hero, start: 'top top', pin: true, scrub: 0.9, anticipatePin: 1, invalidateOnRefresh: true,
-        end: function () { return '+=' + Math.round(innerHeight * (narrow ? 1.15 : 1.55)); }
+        trigger: hero, start: 'top top', end: '+=180', pin: false, scrub: true
       }
     });
 
     // The intro animates inner elements; the scroll timeline only touches their parents, so the two never fight.
-    tl.fromTo('.scroll-cue', { opacity: 1 }, { opacity: 0, duration: 0.05 }, 0);
     tl.fromTo(CV, { light: 0 }, { light: 1, duration: 0.9 }, 0);
     if (board && n) tl.fromTo(board, { '--seam': 0.34 }, { '--seam': 0.1, duration: 0.1 }, 0.8);
 
@@ -354,6 +353,15 @@
     locks.add(0.95, function () { setMark(1, true); pulse(0.5); }, function () { setMark(1, false); });
     tl.fromTo($('.sweep i', phoneHero || board), { xPercent: -120 }, { xPercent: 240, duration: 0.14, ease: 'power1.inOut' }, 0.84);
     tl.to({}, { duration: 0.02 }, 0.98);
+    // Show the assembled hero immediately so the first scroll is not spent pinning an assembly.
+    // The short unpinned ScrollTrigger on this timeline is unused; kill it and fade the cue separately.
+    if (tl.scrollTrigger) tl.scrollTrigger.kill();
+    tl.progress(1);
+    gsap.fromTo('.scroll-cue', { opacity: 1 }, {
+      opacity: 0,
+      ease: 'none',
+      scrollTrigger: { trigger: hero, start: 'top top', end: '+=180', scrub: true }
+    });
 
     // Idle drift and mouse parallax on the floating layer; it fades out as each piece locks.
     var visible = true, t0 = performance.now();
