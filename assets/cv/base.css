@@ -151,6 +151,9 @@ html.menu-open{overflow:clip}
 .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:36px 48px}
 .foot-name{color:var(--text);font:500 clamp(28px,3.4vw,44px)/1 var(--sans);letter-spacing:-.045em}
 .foot-place{margin-top:12px;font:500 11.5px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.foot-email{margin-top:8px;font:500 11.5px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.foot-email a{color:var(--body);text-transform:none;letter-spacing:.04em;transition:color .25s}
+.foot-email a:hover{color:var(--text)}
 .foot-links{display:flex;flex-wrap:wrap;gap:12px 28px;list-style:none;margin:0;padding:0;align-self:flex-end;font-size:15px}
 .foot-links a{color:var(--body);transition:color .25s}
 .foot-links a:hover{color:var(--text)}

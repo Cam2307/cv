@@ -9,11 +9,11 @@
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Cameron Reece Allcock">
 <meta property="og:description" content="Full-stack Developer | Algorithmic Trader | AI Engineer">
-<meta name="cv-gl" content="assets/cv/gl.js">
+<meta name="cv-gl" content="assets/cv/gl.js?v=20261113">
 <link rel="icon" href="assets/img/favicon-cv.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/cv/base.css">
-<link rel="stylesheet" href="assets/cv/home.css">
+<link rel="stylesheet" href="assets/cv/base.css?v=20261113">
+<link rel="stylesheet" href="assets/cv/home.css?v=20261113">
 <script>
   /* Motion is on unless the visitor prefers reduced motion or switched it off. If the scripts
      never start, drop back to the static layout after 4s so nothing stays hidden. */
@@ -27,13 +27,13 @@
     }
   })();
 </script>
-<script defer src="assets/vendor/gsap.min.js"></script>
-<script defer src="assets/vendor/ScrollTrigger.min.js"></script>
-<script defer src="assets/vendor/lenis.min.js"></script>
-<script defer src="assets/cv/jigsaw.js"></script>
-<script defer src="assets/cv/portrait.js"></script>
-<script defer src="assets/cv/site.js"></script>
-<script defer src="assets/cv/home.js"></script>
+<script defer src="assets/vendor/gsap.min.js?v=20261113"></script>
+<script defer src="assets/vendor/ScrollTrigger.min.js?v=20261113"></script>
+<script defer src="assets/vendor/lenis.min.js?v=20261113"></script>
+<script defer src="assets/cv/jigsaw.js?v=20261113"></script>
+<script defer src="assets/cv/portrait.js?v=20261113"></script>
+<script defer src="assets/cv/site.js?v=20261113"></script>
+<script defer src="assets/cv/home.js?v=20261113"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -117,9 +117,8 @@
       <p class="hero-meta hero-meta--left">
         <strong>Ballito, KwaZulu-Natal</strong>
         <span>South Africa</span>
-        <span>500+ connections</span>
-        <span>15K+ downloads on MQL5.com</span>
         <span class="hide-narrow" aria-hidden="true">29.53° S · 31.22° E</span>
+        <span><a class="hero-email" href="mailto:cameron@thelab.tech">cameron@thelab.tech</a></span>
       </p>
 
       <figure class="phone-hero" aria-label="Stylised professional profile preview (not LinkedIn)">
@@ -141,12 +140,24 @@
         <div class="sweep" aria-hidden="true"><i></i></div>
       </figure>
 
-      <p class="hero-meta hero-meta--right">
-        <span class="hide-narrow">Based in</span>
-        <strong class="hide-narrow">Ballito · independent practice</strong>
-        <span class="hide-narrow">549 followers</span>
-        <span class="pz-count" aria-hidden="true">Pieces <b>16</b>/16</span>
-      </p>
+      <aside class="hero-connect" aria-label="Connect with Cameron">
+        <span class="hero-connect-label">Connect</span>
+        <div class="hero-connect-row">
+          <div class="hero-connect-stats">
+            <div class="hero-connect-stat">
+              <strong>500+</strong>
+              <span>connections</span>
+            </div>
+            <div class="hero-connect-stat">
+              <strong>15K+</strong>
+              <span>downloads on MQL5.com</span>
+            </div>
+          </div>
+          <a class="hero-connect-btn" href="https://linkedin.com/in/cameron-allcock-663b5099" rel="noopener">
+            LinkedIn <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </aside>
 
       <ul class="role" aria-label="Roles">
         <li class="role-tile">Full-stack Developer</li>
@@ -192,16 +203,17 @@
             <p class="xp-where">Ballito</p>
             <span class="xp-dot" aria-hidden="true"></span>
           </li>
-          <li class="xp-card pz-cell">
+          <li class="xp-card pz-cell xp-card--clients">
             <h3 class="xp-role">Support Engineer</h3>
             <p class="xp-org">Pivotal Data <span>· Acquired by Connect in late 2022 · <a class="link" href="https://weconnect.tech" target="_blank" rel="noopener">View company</a></span></p>
-            <p class="xp-note">Night-shift team lead · US hours (18:00–03:00 SAST). Five9 and Genesys Cloud for global contact-centre admin teams.</p>
-                      <ul class="client-chips" aria-label="Clients">
-            <li class="client-chip">Quest Diagnostics (US)</li>
-            <li class="client-chip">Bupa (UK)</li>
-            <li class="client-chip client-chip--key">Coca-Cola Beverages South Africa (SA)</li>
-            <li class="client-chip client-chip--key">King Price (SA)</li>
-          </ul>
+            <p class="xp-note">Night-shift team lead · US hours (18:00–03:00 SAST). Managed contact-centre operations for some of the world's largest brands across healthcare, insurance, and fast-moving consumer goods.</p>
+            <p class="xp-clients-label">Global enterprise clients</p>
+            <ul class="client-chips" aria-label="Clients">
+              <li class="client-chip client-chip--key">Quest Diagnostics <span class="client-chip-loc">· US</span></li>
+              <li class="client-chip client-chip--key">Bupa <span class="client-chip-loc">· UK</span></li>
+              <li class="client-chip client-chip--key">Coca-Cola Beverages SA <span class="client-chip-loc">· SA</span></li>
+              <li class="client-chip client-chip--key">King Price Insurance <span class="client-chip-loc">· SA</span></li>
+            </ul>
             <p class="xp-when"><time datetime="2023-01">Jan 2023</time> – <time datetime="2024-10">Oct 2024</time></p>
             <p class="xp-where">Johannesburg</p>
             <span class="xp-dot" aria-hidden="true"></span>
@@ -261,11 +273,36 @@
         <div class="edu-voice">
           <p>I studied for the knowledge, not the certificate.</p>
           <p>I left to pursue a business venture that ultimately failed. I list these years because they were busy and productive: part of my story, not an excuse.</p>
+          <ul class="edu-topics edu-topics--card" aria-label="BCom core modules">
+            <li>Financial Accounting</li>
+            <li>Economics</li>
+            <li>Marketing Management</li>
+            <li>Business Management</li>
+            <li>Business Statistics</li>
+            <li>Commercial Law</li>
+          </ul>
         </div>
       </article>
       <ul class="edu-more" aria-label="More education">
-        <li><strong>University of Cape Town</strong> · Blockchain and Digital Currency: The Future of Money · 2022</li>
-        <li><strong>St Alban's College</strong> · Grade 12 / National Senior Certificate · 2013–2017</li>
+        <li class="edu-more--card edu-more--uct">
+          <p class="edu-more-head"><strong>University of Cape Town</strong> · Blockchain and Digital Currency: The Future of Money · 2022</p>
+          <p class="edu-more-note">A six-week short course on how blockchain is rewiring finance — from the underlying technology to crypto assets and the future of money.</p>
+          <ul class="edu-topics" aria-label="UCT course modules">
+            <li>Blockchain principles</li>
+            <li>Crypto assets &amp; financial instruments</li>
+            <li>Programmable money</li>
+            <li>Ethics &amp; governance</li>
+          </ul>
+        </li>
+        <li class="edu-more--card edu-more--stalbans">
+          <p class="edu-more-head"><strong>St Alban's College</strong> · Grade 12 / National Senior Certificate · 2013–2017</p>
+          <p class="edu-more-note">All-boys IEB boarding school, Pretoria. Matric with strong core subjects.</p>
+          <ul class="edu-topics" aria-label="St Alban's subjects">
+            <li>Core Mathematics</li>
+            <li>Geography</li>
+            <li>Life Sciences</li>
+          </ul>
+        </li>
       </ul>
     </div>
   </section>
@@ -363,11 +400,18 @@
           <li class="cert cert--wide cert--featured">
             <div class="card-surface" aria-hidden="true"></div><div class="card-glint" aria-hidden="true"><i></i></div>
             <div class="cert-body">
-              <p class="cert-top"><span>University of Cape Town · 2022</span></p>
+              <p class="cert-top"><span>University of Cape Town · 2022</span><span>6 weeks</span></p>
               <h3>Blockchain and Digital Currency: The Future of Money</h3>
+              <p class="cert-desc">A six-module course tracing how blockchain is reshaping finance — from the underlying technology and crypto assets to programmable money, financial-market evolution, and the ethics of a new monetary system.</p>
+              <ul class="chips" aria-label="Course modules">
+                <li>Blockchain principles</li>
+                <li>Crypto assets</li>
+                <li>Programmable money</li>
+                <li>Ethics &amp; governance</li>
+              </ul>
             </div>
           </li>
-          <li class="cert cert--featured cert--linked">
+          <li class="cert cert--wide cert--featured cert--linked">
             <div class="card-surface" aria-hidden="true"></div><div class="card-glint" aria-hidden="true"><i></i></div>
             <div class="cert-body">
               <p class="cert-top"><span>Udemy · Jun 2025</span></p>
@@ -478,6 +522,7 @@
         <a class="btn" href="mql5/" data-magnetic>MQL5 Expert Advisors <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
         <a class="btn" href="https://chromewebstore.google.com/detail/ahdhofaekfifggnbgjajoaailndgogeb" target="_blank" rel="noopener" data-magnetic>View ScooprDoopr <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
       </div>
+      <p class="fin-email">or email <a href="mailto:cameron@thelab.tech">cameron@thelab.tech</a></p>
     </div>
   </section>
 
@@ -489,6 +534,7 @@
       <div>
         <p class="foot-name">Cameron Reece Allcock</p>
         <p class="foot-place">Ballito · KwaZulu-Natal · South Africa</p>
+        <p class="foot-email"><a href="mailto:cameron@thelab.tech">cameron@thelab.tech</a></p>
       </div>
       <ul class="foot-links">
         <li><a href="https://linkedin.com/in/cameron-allcock-663b5099" rel="noopener">LinkedIn</a></li>

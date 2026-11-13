@@ -1,0 +1,35 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# HTML — always revalidate so updates show immediately
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# CSS / JS — versioned with ?v= in HTML, so safe to cache forever
+/assets/cv/*.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/cv/*.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# Vendor libraries — never change
+/assets/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fonts — never change
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images — rarely change
+/assets/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Certification assets
+/assets/cv/certs/*
+  Cache-Control: public, max-age=31536000, immutable

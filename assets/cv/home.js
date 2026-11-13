@@ -246,7 +246,7 @@
         return { S: S, slots: slots, top: top, bottom: bottom, inner: inner, outer: outer };
       }
       var head = $('.site-header').offsetHeight;
-      var floor = Math.min.apply(null, $$('.role, .hero-meta--right').map(function (e) { return e.getBoundingClientRect().top; }));
+      var floor = Math.min.apply(null, $$('.role, .hero-connect').map(function (e) { return e.getBoundingClientRect().top; }));
       if (!narrow) floor = Math.min(floor, $('.hero-meta--left').getBoundingClientRect().top);
       var top = (narrow ? $('.hero-meta--left').getBoundingClientRect().bottom + 6 : s.top + head + 4) - cy;
       var bottom = floor - 10 - cy;
@@ -391,6 +391,40 @@
     }
     gsap.ticker.add(drift);
 
+    // Phones: give the profile card presence. A slow levitation plus a scroll parallax that lifts
+    // and settles it as the hero leaves, so the first screen is never a dead frame. Transform-only
+    // (y / rotation / scale) on one element, so it stays smooth on touch. Narrow only: desktop is
+    // untouched.
+    if (narrow) {
+      var card = phoneHero || board;
+      if (card) {
+        var cardY = gsap.quickSetter(card, 'y', 'px');
+        var cardR = gsap.quickSetter(card, 'rotation', 'deg');
+        var cardS = gsap.quickSetter(card, 'scale');
+        var par = { p: 0 };
+        var parST = ST.create({
+          trigger: hero, start: 'top top', end: 'bottom top', scrub: true,
+          onUpdate: function (self) { par.p = self.progress; }
+        });
+        var cardVisible = true, cardIO = new IntersectionObserver(function (es) { cardVisible = es[0].isIntersecting; });
+        cardIO.observe(hero);
+        var cardT0 = performance.now();
+        function levitate() {
+          if (!cardVisible) return;
+          var t = (performance.now() - cardT0) / 1000;
+          cardY(Math.sin(t * 0.85) * 5 - par.p * 30);
+          cardR(Math.sin(t * 0.65 + 1.1) * 0.5);
+          cardS(1 - par.p * 0.07);
+        }
+        gsap.ticker.add(levitate);
+        cleanups.push(function () {
+          gsap.ticker.remove(levitate); cardIO.disconnect();
+          if (parST) parST.kill();
+          gsap.set(card, { clearProps: 'transform' });
+        });
+      }
+    }
+
     cleanups.push(function () {
       gsap.ticker.remove(drift);
       io.disconnect();
@@ -406,7 +440,11 @@
     var offs = [-26, 18, -10, 22, -14, 27, -17, 12, -24];
     tl.from('.header-inner', { y: -14, opacity: 0, duration: 1.2 }, 0.15);
     if (narrow) {
-      tl.from('.hero-name .nm-lit', { opacity: 0, y: 14, duration: 1.3, stagger: 0.16, ease: 'expo.out' }, 0.1);
+      // Cinematic mobile name: each word rises and de-blurs into place — never clipped, and fully
+      // visible the moment it settles.
+      tl.fromTo('.hero-name .nm-lit',
+        { opacity: 0, yPercent: 62, filter: 'blur(10px)' },
+        { opacity: 1, yPercent: 0, filter: 'blur(0px)', duration: 0.95, stagger: 0.13, ease: 'expo.out' }, 0.08);
     } else {
       tl.from('.nm-slice', { xPercent: function (i) { return offs[i % offs.length]; }, opacity: 0, duration: 1.9, stagger: 0.04 }, 0.1);
     }
@@ -417,9 +455,14 @@
       tl.to(enters, { v: 0, duration: 2.1, stagger: { each: 0.03, from: 'random' } }, 0.3);
     }
     tl.from('.board-slots path', { opacity: 0, duration: 1.2, ease: 'power2.out', stagger: { each: 0.03, from: 'random' } }, 0.9);
-    tl.from(['.hero-meta--left', '.hero-meta--right'], { opacity: 0, y: 14, duration: 1.3, stagger: 0.12 }, 0.95);
+    tl.from(['.hero-meta--left', '.hero-connect'], { opacity: 0, y: 14, duration: 1.3, stagger: 0.12 }, 0.95);
     tl.from('.role', { opacity: 0, duration: 1.4, ease: 'power2.out' }, 1.05);
     tl.from('.cue-in', { opacity: 0, y: 10, duration: 1.2 }, 1.5);
+    if (narrow) {
+      // A single light sweep across the profile card on arrival (desktop keeps its own sweep beat).
+      var hsweep = $('.sweep i', phoneHero || board);
+      if (hsweep) tl.fromTo(hsweep, { xPercent: -120, opacity: 1 }, { xPercent: 240, duration: 0.75, ease: 'power2.inOut' }, 1);
+    }
     return tl;
   }
 
@@ -439,6 +482,14 @@
       glint(cards[k]);
       gsap.to(dots[k], { scale: 1, duration: 0.7, ease: 'back.out(3)', overwrite: true });
       if (roll) gsap.to(roll, { yPercent: -100 / cards.length * k, duration: 0.9, ease: 'expo.out', overwrite: true });
+      var chips = $$('.client-chip', cards[k]);
+      if (chips.length) {
+        gsap.fromTo(chips,
+          { y: 18, scale: 0.82, opacity: 0, filter: 'blur(6px)' },
+          { y: 0, scale: 1, opacity: 1, filter: 'blur(0px)', duration: 0.55, stagger: 0.09, ease: 'back.out(1.6)', overwrite: true,
+            onComplete: function () { gsap.to(chips, { boxShadow: 'inset 0 0 0 1px rgba(255,255,255,.06),0 0 0px rgba(255,255,255,0)', duration: 0.6, repeat: 1, yoyo: true, stagger: 0.06 }); }
+          });
+      }
       if (k === cards.length - 1) { setMark(3, true); pulse(0.5); }
     }
     function unlockCard(k) {
@@ -676,6 +727,141 @@
     gsap.from(tail, { y: 24, opacity: 0, stagger: 0.08, ease: 'power2.out', scrollTrigger: { trigger: '.fin-lede', start: 'top 98%', end: 'top 74%', scrub: 0.6 } });
   }
 
+  // Phones: every section heading rises and de-blurs into focus as it arrives, so the long scroll
+  // (certifications alone is several screens) keeps a rhythm. Narrow only — desktop headings are
+  // untouched and stay static.
+  function buildHeads(narrow) {
+    if (!narrow) return;
+    var heads = $$('.intro .label, .xp-head .label, .xp-head .h2, .edu-meta .label, .sec-head .label, .sec-head .h2, .certs-group-head h3');
+    heads.forEach(function (h) {
+      gsap.fromTo(h,
+        { opacity: 0, y: 22, filter: 'blur(8px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.75, ease: 'power3.out',
+          scrollTrigger: { trigger: h, start: 'top 90%', once: true, invalidateOnRefresh: true } });
+    });
+  }
+
+  /* ---------- 3b. Scroll-triggered container slide-in system ----------
+     A reusable, configurable entrance for containers that DON'T already carry
+     a complex scrubbed animation. Only transform (x/y/scale) + opacity are
+     animated, so the compositor keeps everything on the GPU (60fps, no
+     layout/paint). Every tween + ScrollTrigger is created inside the
+     gsap.matchMedia() context, which means mm.revert() (motion off or
+     prefers-reduced-motion) tears it all down and leaves the static layout
+     untouched — that is the graceful fallback. */
+
+  /**
+   * @param {string|Element[]} targets
+   * @param {object} [o]
+   * @param {'up'|'down'|'left'|'right'|'diagonal'} [o.direction='up']
+   * @param {number} [o.distance=48]        travel in px
+   * @param {number} [o.duration=0.9]       seconds
+   * @param {string} [o.ease='power3.out']  GSAP easing curve
+   * @param {number|object} [o.stagger=0]   child stagger (seconds or GSAP object)
+   * @param {string} [o.start='top 88%']    ScrollTrigger start
+   * @param {boolean} [o.once=true]         play once then leave in place
+   * @param {string|Element} [o.trigger]    ScrollTrigger trigger (auto: itself / shared parent)
+   * @param {number} [o.parallax=0]         subtle scrubbed y-drift (px) on the trigger for depth
+   * @param {number} [o.scale=0]            start scale (e.g. 0.97); 0 disables
+   * @param {boolean} [o.opacity=true]      fade from 0
+   * @param {number} [o.delay=0]            seconds before the tween starts
+   */
+  function slideIn(targets, o) {
+    o = o || {};
+    var els = typeof targets === 'string' ? $$(targets)
+              : (targets && targets.length != null ? Array.prototype.slice.call(targets) : [targets]);
+    if (!els.length) return;
+
+    var dir = o.direction || 'up', dist = o.distance != null ? o.distance : 48;
+    var duration = o.duration != null ? o.duration : 0.9;
+    var ease = o.ease || 'power3.out';
+    var start = o.start || 'top 88%';
+    var once = o.once !== false;
+    var fade = o.opacity !== false;
+    var scale = o.scale || 0;
+    var delay = o.delay || 0;
+
+    var from = {};
+    if (fade) from.opacity = 0;
+    if (scale) from.scale = scale;
+    switch (dir) {
+      case 'up':       from.y =  dist; break;
+      case 'down':     from.y = -dist; break;
+      case 'left':     from.x =  dist; break;
+      case 'right':    from.x = -dist; break;
+      case 'diagonal': from.x =  dist * 0.7; from.y = dist * 0.7; break;
+    }
+
+    var to = { opacity: 1, ease: ease, duration: duration, delay: delay, force3D: true };
+    if (from.x != null) to.x = 0;
+    if (from.y != null) to.y = 0;
+    if (scale) to.scale = 1;
+    if (o.stagger) to.stagger = o.stagger;
+
+    var trigger = o.trigger;
+    if (typeof trigger === 'string') trigger = $(trigger);
+    if (!trigger) {
+      if (els.length === 1) {
+        trigger = els[0];
+      } else {
+        var sameParent = els.every(function (e) { return e.parentElement === els[0].parentElement; });
+        trigger = sameParent ? els[0].parentElement : els[0];
+      }
+    }
+    to.scrollTrigger = { trigger: trigger, start: start, once: once, invalidateOnRefresh: true };
+
+    gsap.fromTo(els, from, to);
+
+    // Subtle parallax layer: the container drifts slightly against scroll as
+    // it passes through the viewport, giving the slide-in a sense of depth
+    // without ever touching layout (transform-only, scrubbed).
+    if (o.parallax) {
+      var px = typeof o.parallax === 'number' ? o.parallax : 24;
+      gsap.to(trigger, {
+        y: px, ease: 'none',
+        scrollTrigger: { trigger: trigger, start: 'top bottom', end: 'bottom top', scrub: true, invalidateOnRefresh: true }
+      });
+    }
+  }
+
+  function buildSlideIns(narrow) {
+    var dh = narrow ? 26 : 42;   // heading distance (smaller on mobile — buildHeads adds inner motion)
+    var dc = narrow ? 34 : 48;   // card distance
+
+    // 1. Intro — gentle rise after the hero assembles.
+    slideIn('.intro', { direction: 'up', distance: narrow ? 22 : 34, duration: 1, ease: 'power2.out', start: 'top 92%' });
+
+    // 2. Experience heading block. On mobile buildHeads de-blurs the inner
+    //    title; the container rise layers beneath it for depth.
+    slideIn('.xp-head', { direction: 'up', distance: dh, duration: 0.95, ease: 'power3.out', start: 'top 90%' });
+
+    // 3. Skills + Certifications headings (two independent blocks).
+    $$('.sec-head').forEach(function (h) {
+      slideIn(h, { direction: 'up', distance: dh, duration: 0.9, ease: 'power3.out', start: 'top 90%' });
+    });
+
+    // 4. Extra education cards — staggered cascade with subtle parallax on the list.
+    slideIn('.edu-more--card', {
+      direction: 'up', distance: dc, duration: 0.85, ease: 'power3.out',
+      stagger: 0.12, trigger: '.edu-more', start: 'top 90%', parallax: narrow ? 12 : 22
+    });
+
+    // 5. Highlighted skills strip — quick cascade.
+    slideIn('.skills-strip li', {
+      direction: 'up', distance: narrow ? 18 : 26, duration: 0.55, ease: 'power2.out',
+      stagger: 0.04, trigger: '.skills-strip', start: 'top 86%', parallax: narrow ? 8 : 14
+    });
+
+    // 6. Certification group headers — staggered (each in its own group).
+    $$('.certs-group-head').forEach(function (g, i) {
+      slideIn(g, { direction: 'up', distance: narrow ? 22 : 32, duration: 0.7, ease: 'power3.out',
+                   delay: i * 0.06, start: 'top 90%' });
+    });
+
+    // 7. Footer — final rise.
+    slideIn('.site-footer', { direction: 'up', distance: narrow ? 28 : 42, duration: 1, ease: 'power3.out', start: 'top 96%' });
+  }
+
   /* ---------- 4. Switching motion on and off ---------- */
 
   var mm = null, introTl = null;
@@ -713,6 +899,8 @@
       buildEducation();
       buildSkills(narrow, cleanups);
       buildCerts(narrow);
+      buildHeads(narrow);
+      buildSlideIns(narrow);
       buildFinale(narrow, tall);
       if (first && scrollY < innerHeight * 0.4) introTl = intro(hero, narrow);
       first = false;
