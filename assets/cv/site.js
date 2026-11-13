@@ -63,6 +63,25 @@
     if (mqWide.addEventListener) mqWide.addEventListener('change', onWide);
   }
 
+  /* ---------- Certificate viewer: links to certificate images open in a modal <dialog> ---------- */
+  var certView = d.getElementById('cert-view'), certImg = certView && certView.querySelector('.cert-view-img');
+  var IMG_RE = /\.(jpe?g|png|webp|avif|gif)([?#]|$)/i;
+  if (certView && certImg && typeof certView.showModal === 'function') {
+    var certClose = certView.querySelector('.cert-view-close');
+    d.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || !IMG_RE.test(a.getAttribute('href') || '')) return;
+      e.preventDefault();
+      certImg.src = a.getAttribute('href');
+      certImg.alt = (a.textContent || '').trim() || 'Certificate';
+      certView.showModal();
+      html.classList.add('cert-open');
+    });
+    certView.addEventListener('click', function (e) { if (e.target === certView) certView.close(); });
+    if (certClose) certClose.addEventListener('click', function () { certView.close(); });
+    certView.addEventListener('close', function () { html.classList.remove('cert-open'); });
+  }
+
   /* ---------- Pointer tracking (also feeds the shader light and the floating pieces) ---------- */
   addEventListener('pointermove', function (e) {
     if (e.pointerType !== 'mouse') return;
