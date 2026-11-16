@@ -163,7 +163,7 @@ html.menu-open{overflow:clip}
 @media print{
   :root{--text:#000000;--body:#222222;--muted:#444444;--dim:#444444;--line:rgba(0,0,0,.2);--line-2:rgba(0,0,0,.3);--line-3:rgba(0,0,0,.45)}
   html,body{background:#ffffff!important;color:#222222}
-  .gl,.grain,.skip,.cursor-ring,.cursor-dot,.menu,.menu-btn,.motion-switch,.mark-count,.scroll-cue,.shards,.board-slots,.sweep,.nm-slice,.nm-lit,.xp-year,.pz-glint,.card-glint{display:none!important}
+  .gl,.bg-fx,.grain,.skip,.cursor-ring,.cursor-dot,.menu,.menu-btn,.motion-switch,.mark-count,.scroll-cue,.shards,.board-slots,.sweep,.nm-slice,.nm-lit,.xp-year,.pz-glint,.card-glint{display:none!important}
   .site-header{position:static}
   *,*::before,*::after{opacity:1!important;transform:none!important;translate:none!important;rotate:none!important;scale:none!important;animation:none!important;transition:none!important}
   .nm-base,.statement .w,.edu-voice{color:inherit!important}
