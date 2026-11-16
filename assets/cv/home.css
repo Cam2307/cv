@@ -23,19 +23,28 @@ main,.site-footer{position:relative;z-index:2}
     radial-gradient(30% 26% at 62% 32%,rgba(255,255,255,.05),transparent 76%);
 }
 
-/* Blueprint mesh: a bolder major grid with a finer minor grid inside it, faded at the edges so
-   it never reads as a hard tile. Both tiers share the 72px step the drift keyframe uses, so the
-   loop is seamless. */
+/* Blueprint mesh: hairlines only, and dim ones. The major lines are a soft neutral rather than
+   pure white and the finer tier is barely there, so the mesh reads as a faint structural hint
+   instead of a drawn grid. The hairline stays a whole pixel on purpose: a fractional width lands
+   on different sub-pixel coverage at 1x/2x/3x, which would make the grid change weight between
+   device types. Its softness comes from colour, alpha and how far the mask reach falls off.
+   Steps, weights and mask are variables so a narrower screen can thin and open up the mesh
+   without restating the whole layer. */
 .bg-fx-grid{
+  --grid-step:72px;
+  --grid-minor-step:24px;
+  --grid-major:rgba(206,206,206,.075);
+  --grid-minor:rgba(206,206,206,.025);
+  --grid-fade:radial-gradient(140% 110% at 50% 28%,#000 20%,transparent 80%);
   inset:-26%;
   background-image:
-    linear-gradient(to right,rgba(255,255,255,.14) 1px,transparent 1px),
-    linear-gradient(to bottom,rgba(255,255,255,.14) 1px,transparent 1px),
-    linear-gradient(to right,rgba(255,255,255,.055) 1px,transparent 1px),
-    linear-gradient(to bottom,rgba(255,255,255,.055) 1px,transparent 1px);
-  background-size:72px 72px,72px 72px,24px 24px,24px 24px;
-  -webkit-mask-image:radial-gradient(140% 110% at 50% 28%,#000 24%,transparent 84%);
-  mask-image:radial-gradient(140% 110% at 50% 28%,#000 24%,transparent 84%);
+    linear-gradient(to right,var(--grid-major) 1px,transparent 1px),
+    linear-gradient(to bottom,var(--grid-major) 1px,transparent 1px),
+    linear-gradient(to right,var(--grid-minor) 1px,transparent 1px),
+    linear-gradient(to bottom,var(--grid-minor) 1px,transparent 1px);
+  background-size:var(--grid-step) var(--grid-step),var(--grid-step) var(--grid-step),var(--grid-minor-step) var(--grid-minor-step),var(--grid-minor-step) var(--grid-minor-step);
+  -webkit-mask-image:var(--grid-fade);
+  mask-image:var(--grid-fade);
 }
 
 /* Two dot fields at different scales and speeds; the parallax between them reads as depth
@@ -69,14 +78,14 @@ main,.site-footer{position:relative;z-index:2}
 
 @media (prefers-reduced-motion:no-preference){
   .motion .bg-fx-glow{will-change:transform;animation:bgFxGlow 40s var(--ease-io) infinite alternate}
-  .motion .bg-fx-grid{will-change:transform;animation:bgFxGrid 60s linear infinite}
+  .motion .bg-fx-grid{will-change:transform;animation:bgFxGrid 34s ease-in-out infinite alternate}
   .motion .bg-fx-dots{will-change:transform;animation:bgFxDotsFar 72s ease-in-out infinite alternate}
   .motion .bg-fx-dots--near{will-change:transform;animation:bgFxDotsNear 58s ease-in-out infinite alternate}
   .motion .bg-fx-shape--a{animation:bgFxTurn 96s ease-in-out infinite alternate}
   .motion .bg-fx-shape--b{animation:bgFxTurnRev 116s ease-in-out infinite alternate,bgFxLift 60s ease-in-out infinite alternate}
 }
 @keyframes bgFxGlow{from{transform:translate3d(-2%,-1.5%,0) scale(1)}to{transform:translate3d(2%,1.5%,0) scale(1.06)}}
-@keyframes bgFxGrid{from{transform:translate3d(0,0,0)}to{transform:translate3d(72px,72px,0)}}
+@keyframes bgFxGrid{from{transform:translate3d(-56px,-34px,0)}to{transform:translate3d(56px,34px,0)}}
 @keyframes bgFxDotsFar{from{transform:translate3d(-34px,-31px,0)}to{transform:translate3d(34px,31px,0)}}
 @keyframes bgFxDotsNear{from{transform:translate3d(29px,27px,0)}to{transform:translate3d(-29px,-27px,0)}}
 @keyframes bgFxTurn{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
@@ -85,8 +94,18 @@ main,.site-footer{position:relative;z-index:2}
 
 /* Phones keep every layer. They are all transform/opacity-only composites and the fields are
    masked well inside the viewport, so the whole set stays within the frame budget. The tighter
-   tile sizes put more of the pattern on a narrow screen, where it was previously too sparse. */
+   dot tiles put more of the pattern on a narrow screen, where it was previously too sparse.
+   The grid goes the other way: a narrow screen fits fewer lines but each one sits closer to the
+   eye, so the mesh is thinned again and opened up to roughly half the line density of desktop,
+   which is what was making it read as a drawn grid rather than a hint. */
 @media (max-width:959.98px){
+  .bg-fx-grid{
+    --grid-step:88px;
+    --grid-minor-step:30px;
+    --grid-major:rgba(206,206,206,.045);
+    --grid-minor:rgba(206,206,206,.012);
+    --grid-fade:radial-gradient(120% 92% at 50% 26%,#000 6%,transparent 62%);
+  }
   .bg-fx-dots{background-size:260px 232px}
   .bg-fx-dots--near{background-size:220px 200px}
   .bg-fx-shape--a{top:-116px;left:-128px;width:260px;height:260px}
