@@ -11,7 +11,7 @@ main,.site-footer{position:relative;z-index:2}
    layer is fixed, transform/opacity-only and animated solely while .motion is on, so it costs
    one composite per layer, never triggers layout, and freezes to a still frame for reduced
    motion or Motion off. Decorative: aria-hidden, pointer-events:none, hidden when printing. */
-.bg-fx{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.bg-fx{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden;--grid-fade:radial-gradient(140% 110% at 50% 28%,#000 20%,transparent 80%)}
 .bg-fx>*{position:absolute}
 
 /* Light pools that drift against one another. */
@@ -35,7 +35,6 @@ main,.site-footer{position:relative;z-index:2}
   --grid-minor-step:24px;
   --grid-major:rgba(206,206,206,.075);
   --grid-minor:rgba(206,206,206,.025);
-  --grid-fade:radial-gradient(140% 110% at 50% 28%,#000 20%,transparent 80%);
   inset:-26%;
   background-image:
     linear-gradient(to right,var(--grid-major) 1px,transparent 1px),
@@ -43,6 +42,14 @@ main,.site-footer{position:relative;z-index:2}
     linear-gradient(to right,var(--grid-minor) 1px,transparent 1px),
     linear-gradient(to bottom,var(--grid-minor) 1px,transparent 1px);
   background-size:var(--grid-step) var(--grid-step),var(--grid-step) var(--grid-step),var(--grid-minor-step) var(--grid-minor-step),var(--grid-minor-step) var(--grid-minor-step);
+  -webkit-mask-image:var(--grid-fade);
+  mask-image:var(--grid-fade);
+}
+.bg-fx-canvas{inset:-26%;width:152%;height:152%;pointer-events:none}
+.bg-fx-beam{
+  inset:-26%;
+  background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.015) 48%,rgba(255,255,255,.04) 50%,rgba(255,255,255,.015) 52%,transparent 60%);
+  background-size:200% 200%;
   -webkit-mask-image:var(--grid-fade);
   mask-image:var(--grid-fade);
 }
@@ -79,6 +86,7 @@ main,.site-footer{position:relative;z-index:2}
 @media (prefers-reduced-motion:no-preference){
   .motion .bg-fx-glow{will-change:transform;animation:bgFxGlow 40s var(--ease-io) infinite alternate}
   .motion .bg-fx-grid{will-change:transform;animation:bgFxGrid 34s ease-in-out infinite alternate}
+  .motion .bg-fx-beam{will-change:background-position;animation:bgFxBeam 28s var(--ease-io) infinite alternate}
   .motion .bg-fx-dots{will-change:transform;animation:bgFxDotsFar 72s ease-in-out infinite alternate}
   .motion .bg-fx-dots--near{will-change:transform;animation:bgFxDotsNear 58s ease-in-out infinite alternate}
   .motion .bg-fx-shape--a{animation:bgFxTurn 96s ease-in-out infinite alternate}
@@ -86,6 +94,7 @@ main,.site-footer{position:relative;z-index:2}
 }
 @keyframes bgFxGlow{from{transform:translate3d(-2%,-1.5%,0) scale(1)}to{transform:translate3d(2%,1.5%,0) scale(1.06)}}
 @keyframes bgFxGrid{from{transform:translate3d(-56px,-34px,0)}to{transform:translate3d(56px,34px,0)}}
+@keyframes bgFxBeam{from{background-position:100% 100%}to{background-position:0% 0%}}
 @keyframes bgFxDotsFar{from{transform:translate3d(-34px,-31px,0)}to{transform:translate3d(34px,31px,0)}}
 @keyframes bgFxDotsNear{from{transform:translate3d(29px,27px,0)}to{transform:translate3d(-29px,-27px,0)}}
 @keyframes bgFxTurn{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
@@ -99,12 +108,12 @@ main,.site-footer{position:relative;z-index:2}
    eye, so the mesh is thinned again and opened up to roughly half the line density of desktop,
    which is what was making it read as a drawn grid rather than a hint. */
 @media (max-width:959.98px){
+  .bg-fx{--grid-fade:radial-gradient(120% 92% at 50% 26%,#000 6%,transparent 62%)}
   .bg-fx-grid{
     --grid-step:88px;
     --grid-minor-step:30px;
     --grid-major:rgba(206,206,206,.045);
     --grid-minor:rgba(206,206,206,.012);
-    --grid-fade:radial-gradient(120% 92% at 50% 26%,#000 6%,transparent 62%);
   }
   .bg-fx-dots{background-size:260px 232px}
   .bg-fx-dots--near{background-size:220px 200px}
@@ -134,7 +143,7 @@ section{position:relative}
 .hero-stage{position:relative;height:100%;max-width:1680px;margin:0 auto;padding:calc(var(--header-h) + 8px) var(--gutter) clamp(18px,3svh,34px);display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto auto auto;grid-template-areas:"left board right" "role role role" "name name name" "cue cue cue";column-gap:clamp(24px,4vw,72px)}
 .hero-meta{position:relative;z-index:2;display:grid;gap:6px;font:500 11.5px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .hero-meta--left{grid-area:left;align-self:end;justify-self:start;padding-bottom:4px}
-.hero-connect{grid-area:right;align-self:end;justify-self:end;display:flex;flex-direction:column;gap:16px;min-width:min(46vw,560px);padding:22px 24px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.025);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 24px 60px rgba(0,0,0,.45);overflow:hidden;position:relative}
+.hero-connect{grid-area:right;align-self:end;justify-self:end;display:flex;flex-direction:column;gap:16px;min-width:min(46vw,560px);padding:22px 24px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:var(--surface-1) linear-gradient(rgba(255,255,255,.025),rgba(255,255,255,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 24px 60px rgba(0,0,0,.45);overflow:hidden;position:relative}
 .hero-connect::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(120% 90% at 0% 0%,rgba(255,255,255,.045),transparent 55%);pointer-events:none}
 .hero-connect-label{position:relative;z-index:1;display:flex;align-items:center;gap:9px;font:500 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .hero-connect-label::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--text);opacity:.85;flex-shrink:0}
@@ -165,8 +174,8 @@ section{position:relative}
 .profile-headline{margin:10px 0 0;font-size:12px;line-height:1.45;color:var(--body);max-width:18em}
 .profile-stats{margin:16px 0 0;font:500 10px/1.35 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .profile-cta{margin:auto 0 0;padding-top:28px;width:100%}
-.profile-btn{display:block;width:100%;box-sizing:border-box;padding:11px 14px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--text);font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .2s ease,border-color .2s ease,color .2s ease}
-.profile-btn:hover,.profile-btn:focus-visible{background:rgba(255,255,255,.06);border-color:var(--text);color:var(--text);outline:none}
+.profile-btn{display:block;width:100%;box-sizing:border-box;padding:11px 14px;border-radius:999px;border:1px solid var(--line-2);background-color:var(--surface-1);color:var(--text);font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .2s ease,border-color .2s ease,color .2s ease}
+.profile-btn:hover,.profile-btn:focus-visible{background:var(--surface-1) linear-gradient(rgba(255,255,255,.06),rgba(255,255,255,.06));border-color:var(--text);color:var(--text);outline:none}
 
 .phone-hero .sweep{border-radius:34px}
 
@@ -282,9 +291,9 @@ html:not(.js) .board:not(.board--avatar){--board:clamp(240px,42vw,320px)}
 .xp-card .skill-chips{grid-row:5;grid-column:1/-1;margin-top:12px}
 .xp-clients-label{grid-row:5;grid-column:1/-1;margin-top:14px;font:500 10.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .client-chips{display:flex;flex-wrap:wrap;gap:8px 10px;list-style:none;margin:0;padding:0}
-.client-chip{font:500 11px/1.4 var(--mono);letter-spacing:.03em;color:var(--body);border:1px solid var(--line);border-radius:4px;padding:7px 12px}
+.client-chip{font:500 11px/1.4 var(--mono);letter-spacing:.03em;color:var(--body);border:1px solid var(--line);border-radius:4px;padding:7px 12px;background-color:var(--surface-1)}
 .client-chip-loc{display:inline;color:var(--muted);font-weight:400}
-.client-chip--key{border-color:var(--line-3);color:var(--text);font-weight:600;background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.01));box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 0 16px rgba(255,255,255,.04)}
+.client-chip--key{border-color:var(--line-3);color:var(--text);font-weight:600;background:var(--surface-1) linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.01));box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 0 16px rgba(255,255,255,.04)}
 .client-chip--key .client-chip-loc{color:var(--body);font-weight:500;opacity:.85}
 .xp-card>.xp-dot{position:absolute;left:var(--spine);top:50%;z-index:3;width:7px;height:7px;margin:-3.5px 0 0 -3px;border-radius:50%;background:#f2f2f2;box-shadow:0 0 0 4px #0d0d0d}
 @media (max-width:959.98px){
@@ -381,8 +390,8 @@ html:not(.js) .board:not(.board--avatar){--board:clamp(240px,42vw,320px)}
 .cert-view[open]::backdrop{opacity:1}
 @starting-style{.cert-view[open]::backdrop{opacity:0}}
 .cert-view-img{position:absolute;inset:0;margin:auto;max-width:min(1120px,92vw);max-height:86svh;width:auto;height:auto;border:1px solid var(--line-2);border-radius:8px;background:#0a0a0a;box-shadow:0 40px 120px rgba(0,0,0,.6)}
-.cert-view-close{position:fixed;top:clamp(14px,3vh,26px);right:clamp(14px,3vw,26px);z-index:2;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text);background:rgba(255,255,255,.06);border:1px solid var(--line-2);border-radius:999px;padding:11px 18px;cursor:pointer;transition:background .2s ease}
-.cert-view-close:hover{background:rgba(255,255,255,.14)}
+.cert-view-close{position:fixed;top:clamp(14px,3vh,26px);right:clamp(14px,3vw,26px);z-index:2;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text);background-color:var(--surface-1);background-image:linear-gradient(rgba(255,255,255,.06),rgba(255,255,255,.06));border:1px solid var(--line-2);border-radius:999px;padding:11px 18px;cursor:pointer;transition:background .2s ease}
+.cert-view-close:hover{background:var(--surface-1) linear-gradient(rgba(255,255,255,.14),rgba(255,255,255,.14))}
 html.cert-open{overflow:clip}
 @media (prefers-reduced-motion:no-preference){.motion .cert-view[open] .cert-view-img{animation:cert-img-in .45s var(--ease) both}}
 @keyframes cert-img-in{from{opacity:0;transform:scale(.97)}}

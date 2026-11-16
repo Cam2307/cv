@@ -892,6 +892,7 @@
     if (pzCount) pzCount.textContent = '00';
     lenisOn();
     glOn();
+    if (CV.bg) CV.bg.start();
     mm = gsap.matchMedia();
     // matchMedia only runs this when at least one query matches, hence `any`. Height only matters
     // on wide screens, so a phone's collapsing address bar never tears the timelines down.
@@ -923,6 +924,7 @@
     mm = null;
     lenisOff();
     glOff();
+    if (CV.bg) CV.bg.stop();
     marks.forEach(function (m) { m.classList.add('on'); });
     if (pzCount) pzCount.textContent = board && portrait && portrait.pieces.length ? pad(portrait.pieces.length) : '16';
     CV.light = 0;
