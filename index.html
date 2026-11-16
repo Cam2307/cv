@@ -15,16 +15,23 @@
 <link rel="stylesheet" href="assets/cv/base.css?v=20261113f">
 <link rel="stylesheet" href="assets/cv/home.css?v=20261116b">
 <script>
-  /* Motion is on unless the visitor prefers reduced motion or switched it off. If the scripts
-     never start, drop back to the static layout after 4s so nothing stays hidden. */
+  /* Motion is on unless the visitor prefers reduced motion or switched it off. If the motion
+     scripts genuinely fail to load (offline, blocked CDN, script error), fall back to the static
+     layout so nothing stays hidden — but only once they have had their chance, never merely
+     because a cold cache made them slow. */
   (function () {
     var h = document.documentElement, p = null;
     h.classList.add('js');
     try { p = localStorage.getItem('cv-motion'); } catch (e) {}
-    if (p ? p === 'on' : !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      h.classList.add('motion');
-      setTimeout(function () { if (!(window.CV && window.CV.ready)) h.classList.remove('motion'); }, 4000);
+    if (!(p ? p === 'on' : !matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+    h.classList.add('motion');
+    // The deferred scripts run before `load`, so by then a missing library or an init that never
+    // completed is a real failure; a slow-but-successful load has already set CV.ready.
+    function staticFallback() {
+      if (!(window.gsap && window.ScrollTrigger && window.CV && window.CV.ready)) h.classList.remove('motion');
     }
+    if (document.readyState === 'complete') staticFallback();
+    else window.addEventListener('load', staticFallback);
   })();
 </script>
 <script defer src="assets/vendor/gsap.min.js?v=20261113"></script>
