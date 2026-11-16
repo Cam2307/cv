@@ -146,16 +146,15 @@ html:not(.js) .board:not(.board--avatar){--board:clamp(240px,42vw,320px)}
 .intro .label{margin-bottom:clamp(28px,4vw,48px)}
 .statement{max-width:1180px;font:450 clamp(29px,4.25vw,66px)/1.1 var(--sans);letter-spacing:-.04em;color:var(--text)}
 .statement em{font:400 italic 1.08em/1 var(--serif);letter-spacing:-.01em}
-.motion .statement .w{color:#6b6b6b}
+/* Read-through highlight: each word brightens as it scrolls into focus and gains a matching
+   text-stroke, so lit words read bolder. The stroke paints outside the glyph outline, so the
+   line never reflows; its colour is scrubbed (JS) from transparent up to the lit colour. */
+.motion .statement .w{color:#6b6b6b;-webkit-text-stroke-width:.026em;-webkit-text-stroke-color:transparent}
 
 /* ---------- Experience ---------- */
 .xp{padding:clamp(80px,12svh,140px) 0;overflow:clip}
 .xp-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:center;min-height:calc(100svh - 2 * clamp(80px,12svh,140px))}
 .xp-head .h2{margin:22px 0 18px}
-.xp-year{display:none;margin-top:clamp(24px,5svh,56px);height:.95em;overflow:hidden;font:600 clamp(72px,9vw,150px)/.95 var(--sans);letter-spacing:-.065em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.34)}
-.motion .xp-year{display:block}
-.xp-year-roll span{display:block;height:.95em}
-.xp-year-roll .is-word{font-size:.46em;height:2.065em;line-height:2.065;letter-spacing:-.04em}
 .chain-wrap{--spine:44px;position:relative}
 .chain{position:relative;list-style:none;margin:0;padding:0}
 .spine{position:absolute;left:var(--spine);top:0;bottom:0;width:1px;background:var(--line);z-index:2;pointer-events:none}
@@ -193,8 +192,6 @@ html:not(.js) .board:not(.board--avatar){--board:clamp(240px,42vw,320px)}
   .xp-card .client-chips{grid-row:7}
   .xp-card .skill-chips{grid-row:6}
   .xp-head{overflow:hidden}
-  .motion .xp-year{display:block;margin-top:clamp(12px,2.5svh,24px);height:.88em;font-size:clamp(44px,13vw,68px);letter-spacing:-.05em}
-  .xp-year-roll .is-word{font-size:.5em;height:1.76em;line-height:1.76}
 }
 
 /* ---------- Education ---------- */

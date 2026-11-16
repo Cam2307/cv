@@ -512,8 +512,12 @@
   function buildStatement() {
     var words = $$('.statement .w');
     if (!words.length) return;
+    // Each word brightens and gains a matching text-stroke as it scrolls into focus, so the
+    // read-through highlight reads bolder. The stroke paints outside the glyphs (no reflow).
     gsap.timeline({ scrollTrigger: { trigger: '.statement', start: 'top 82%', end: 'bottom 52%', scrub: 0.6 } })
-      .fromTo(words, { color: '#6b6b6b' }, { color: '#f2f2f2', duration: 0.12, stagger: 0.88 / words.length, ease: 'none' }, 0);
+      .fromTo(words,
+        { color: '#6b6b6b', webkitTextStrokeColor: 'rgba(242,242,242,0)' },
+        { color: '#f2f2f2', webkitTextStrokeColor: 'rgba(242,242,242,1)', duration: 0.12, stagger: 0.88 / words.length, ease: 'none' }, 0);
   }
 
   function buildExperience(narrow, tall) {
