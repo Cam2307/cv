@@ -16,69 +16,78 @@ main,.site-footer{position:relative;z-index:2}
 
 /* Light pools that drift against one another. */
 .bg-fx-glow{
-  inset:-25%;
+  inset:-28%;
   background:
-    radial-gradient(44% 40% at 24% 18%,rgba(255,255,255,.055),transparent 70%),
-    radial-gradient(38% 34% at 76% 76%,rgba(255,255,255,.04),transparent 72%);
+    radial-gradient(42% 38% at 22% 16%,rgba(255,255,255,.10),transparent 72%),
+    radial-gradient(36% 32% at 78% 78%,rgba(255,255,255,.075),transparent 74%),
+    radial-gradient(30% 26% at 62% 32%,rgba(255,255,255,.05),transparent 76%);
 }
 
-/* Blueprint grid, faded at the edges so it never reads as a hard tile. */
+/* Blueprint mesh: a bolder major grid with a finer minor grid inside it, faded at the edges so
+   it never reads as a hard tile. Both tiers share the 96px step the drift keyframe uses, so the
+   loop is seamless. */
 .bg-fx-grid{
-  inset:-14%;
+  inset:-16%;
   background-image:
-    linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px),
-    linear-gradient(to bottom,rgba(255,255,255,.05) 1px,transparent 1px);
-  background-size:72px 72px;
-  -webkit-mask-image:radial-gradient(130% 100% at 50% 20%,#000 6%,transparent 66%);
-  mask-image:radial-gradient(130% 100% at 50% 20%,#000 6%,transparent 66%);
+    linear-gradient(to right,rgba(255,255,255,.14) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(255,255,255,.14) 1px,transparent 1px),
+    linear-gradient(to right,rgba(255,255,255,.055) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:96px 96px,96px 96px,24px 24px,24px 24px;
+  -webkit-mask-image:radial-gradient(140% 110% at 50% 28%,#000 24%,transparent 84%);
+  mask-image:radial-gradient(140% 110% at 50% 28%,#000 24%,transparent 84%);
 }
 
-/* Two sparse dot fields; their different scales and speeds read as depth, not one sheet. */
+/* Two dot fields at different scales and speeds; the parallax between them reads as depth
+   rather than one flat sheet. */
 .bg-fx-dots{
-  inset:-22%;
+  inset:-24%;
   background-image:
-    radial-gradient(1.4px 1.4px at 44px 62px,rgba(255,255,255,.16),transparent 60%),
-    radial-gradient(1.4px 1.4px at 186px 24px,rgba(255,255,255,.10),transparent 60%),
-    radial-gradient(1.4px 1.4px at 302px 148px,rgba(255,255,255,.13),transparent 60%),
-    radial-gradient(1.4px 1.4px at 96px 284px,rgba(255,255,255,.09),transparent 60%),
-    radial-gradient(1.4px 1.4px at 246px 226px,rgba(255,255,255,.12),transparent 60%);
+    radial-gradient(2.4px 2.4px at 44px 62px,rgba(255,255,255,.34),transparent 62%),
+    radial-gradient(2.4px 2.4px at 186px 24px,rgba(255,255,255,.22),transparent 62%),
+    radial-gradient(2.4px 2.4px at 302px 148px,rgba(255,255,255,.28),transparent 62%),
+    radial-gradient(2.4px 2.4px at 96px 284px,rgba(255,255,255,.20),transparent 62%),
+    radial-gradient(2.4px 2.4px at 246px 226px,rgba(255,255,255,.26),transparent 62%);
   background-size:360px 320px;
-  -webkit-mask-image:radial-gradient(120% 100% at 50% 40%,#000 18%,transparent 86%);
-  mask-image:radial-gradient(120% 100% at 50% 40%,#000 18%,transparent 86%);
+  -webkit-mask-image:radial-gradient(135% 105% at 50% 42%,#000 32%,transparent 94%);
+  mask-image:radial-gradient(135% 105% at 50% 42%,#000 32%,transparent 94%);
 }
 .bg-fx-dots--near{
   background-image:
-    radial-gradient(2px 2px at 70px 90px,rgba(255,255,255,.13),transparent 62%),
-    radial-gradient(2px 2px at 220px 40px,rgba(255,255,255,.09),transparent 62%),
-    radial-gradient(2px 2px at 150px 210px,rgba(255,255,255,.11),transparent 62%);
+    radial-gradient(3.2px 3.2px at 70px 90px,rgba(255,255,255,.30),transparent 64%),
+    radial-gradient(3.2px 3.2px at 220px 40px,rgba(255,255,255,.20),transparent 64%),
+    radial-gradient(3.2px 3.2px at 150px 210px,rgba(255,255,255,.25),transparent 64%);
   background-size:300px 280px;
 }
 
 /* Two outlined shapes kept to the margins, so they frame the content rather than cross it. */
-.bg-fx-shape{border:1px solid rgba(255,255,255,.07);border-radius:2px}
+.bg-fx-shape{border:1px solid rgba(255,255,255,.17);border-radius:2px}
 .bg-fx-shape--a{top:-96px;left:-104px;width:380px;height:380px}
 .bg-fx-shape--b{right:-112px;bottom:-120px;width:300px;height:300px}
 
 @media (prefers-reduced-motion:no-preference){
-  .motion .bg-fx-glow{will-change:transform;animation:bgFxGlow 54s var(--ease-io) infinite alternate}
-  .motion .bg-fx-grid{will-change:transform;animation:bgFxGrid 96s linear infinite}
-  .motion .bg-fx-dots{will-change:transform;animation:bgFxDotsFar 170s linear infinite}
-  .motion .bg-fx-dots--near{will-change:transform;animation:bgFxDotsNear 112s linear infinite}
-  .motion .bg-fx-shape--a{animation:bgFxSpin 168s linear infinite}
-  .motion .bg-fx-shape--b{animation:bgFxSpinRev 204s linear infinite,bgFxLift 78s ease-in-out infinite alternate}
+  .motion .bg-fx-glow{will-change:transform;animation:bgFxGlow 40s var(--ease-io) infinite alternate}
+  .motion .bg-fx-grid{will-change:transform;animation:bgFxGrid 60s linear infinite}
+  .motion .bg-fx-dots{will-change:transform;animation:bgFxDotsFar 95s linear infinite}
+  .motion .bg-fx-dots--near{will-change:transform;animation:bgFxDotsNear 70s linear infinite}
+  .motion .bg-fx-shape--a{animation:bgFxSpin 140s linear infinite}
+  .motion .bg-fx-shape--b{animation:bgFxSpinRev 170s linear infinite,bgFxLift 60s ease-in-out infinite alternate}
 }
 @keyframes bgFxGlow{from{transform:translate3d(-2%,-1.5%,0) scale(1)}to{transform:translate3d(2%,1.5%,0) scale(1.06)}}
-@keyframes bgFxGrid{from{transform:translate3d(0,0,0)}to{transform:translate3d(72px,72px,0)}}
+@keyframes bgFxGrid{from{transform:translate3d(0,0,0)}to{transform:translate3d(96px,96px,0)}}
 @keyframes bgFxDotsFar{from{transform:translate3d(0,0,0)}to{transform:translate3d(360px,320px,0)}}
 @keyframes bgFxDotsNear{from{transform:translate3d(0,0,0)}to{transform:translate3d(-300px,-280px,0)}}
 @keyframes bgFxSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 @keyframes bgFxSpinRev{from{transform:rotate(0)}to{transform:rotate(-360deg)}}
 @keyframes bgFxLift{from{translate:0 0}to{translate:0 -30px}}
 
-/* Phones: keep only the two cheapest layers (light + grid) plus the far dot field — the near
-   field and the outlined shapes are pure garnish and are dropped to protect the frame budget. */
+/* Phones keep every layer. They are all transform/opacity-only composites and the fields are
+   masked well inside the viewport, so the whole set stays within the frame budget. */
 @media (max-width:959.98px){
-  .bg-fx-dots--near,.bg-fx-shape{display:none}
+  .bg-fx-dots{background-size:260px 232px}
+  .bg-fx-dots--near{background-size:220px 200px}
+  .bg-fx-shape--a{top:-130px;left:-150px;width:320px;height:320px}
+  .bg-fx-shape--b{right:-140px;bottom:-150px;width:260px;height:260px}
 }
 main:focus{outline:none}
 section{position:relative}
