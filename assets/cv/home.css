@@ -312,3 +312,28 @@ html.cert-open{overflow:clip}
   .edu{padding:12px 0 40px}
   .certs{padding:32px 0 44px}
 }
+
+/* ---------- Touch feedback (mobile) ----------
+   Feedback only on things you can actually tap (buttons / links), so a press always means
+   something. Transform-only, so it stays on the compositor; touch-action:manipulation removes
+   the ~300ms tap delay. Hover states are neutralised on touch, where they would otherwise
+   stick on after the finger lifts — :active becomes the single source of press feedback. */
+@media (max-width:959.98px){
+  .btn,.hero-connect-btn,.profile-btn,.menu-btn,.menu-close,.cert-view-close,.motion-switch,.skip{touch-action:manipulation}
+  .btn{min-height:52px;transition:background-color .3s,border-color .3s,color .3s,transform .16s cubic-bezier(.2,.7,.1,1)}
+  .hero-connect-btn{min-height:46px}
+  .menu-close,.menu-btn{min-height:44px}
+  .btn:active,.hero-connect-btn:active,.menu-btn:active,.menu-close:active,.cert-view-close:active{transform:scale(.965)}
+  .btn--solid:active{background:#e2e2e2;border-color:#e2e2e2}
+  /* Comfortable tap areas for the small inline links. */
+  .cert-links a,.fin-email a,.link,.hero-email{padding:6px 0}
+  .foot-links a{padding:8px 0}
+}
+@media (hover:none){
+  .btn:hover{border-color:var(--line-3)}
+  .btn--solid:hover{background:#f2f2f2}
+  .hero-connect-btn:hover,.hero-connect-btn:focus-visible{transform:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(255,255,255,.10)}
+  .hero-email:hover{color:var(--body)}
+  .link:hover{background-size:100% 1px;background-position:0 100%}
+  .cert-view-close:hover{background:rgba(255,255,255,.06)}
+}
