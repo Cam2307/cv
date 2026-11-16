@@ -119,6 +119,7 @@ html:not(.js) .board:not(.board--avatar){--board:clamp(240px,42vw,320px)}
   .hero-connect-stats{gap:0}
   .hero-connect-stat:first-child{padding-right:16px;border-right:1px solid rgba(255,255,255,.07)}
   .hero-connect-stat:last-child{padding-left:16px}
+  .hero-connect-stat{justify-content:flex-start}
   .hero-connect-stat strong{font-size:clamp(24px,8vw,32px)}
   .hero-connect-stat span{font-size:10px}
   .hero-connect-btn{margin-left:0;width:100%;padding:14px 18px;font-size:11px;letter-spacing:.12em;border-radius:999px;background:var(--text);color:#050505;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(255,255,255,.10)}
